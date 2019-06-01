@@ -17,10 +17,18 @@ public enum TileType {
     CLOUD_CENTER(25),
     CLOUD_RIGHT(26),
 
-    CLOUD_TRIPLE(8),
-    PIPE_UP(9),
-    PIPE_LEFT(10),
-    PIPE_SMALL(11),
+    PIPE_UP_RIGHT(8),
+    PIPE_UP_LEFT(9),
+    PIPE_CENTER_LEFT(30),
+    PIPE_CENTER_RIGHT(31),
+
+    PIPE_LEFT_UP(10),
+    PIPE_LEFT_DOWN(32),
+    PIPE_LEFT_CENTER_UP(33),
+    PIPE_LEFT_CENTER_DOWN(34),
+    PIPE_SMALL_UP(11),
+    PIPE_SMALL_DOWN(35),
+
     GROUND_BROWN(12),
     GROUND_BLUE(13),
     CASTLE_RECT_HOLE(14),
@@ -29,8 +37,16 @@ public enum TileType {
     GRANITE_BROWN(17),
     GRANITE_BLUE(18),
     COIN(19),
-    PLATFORM_GRASS(20),
-    BRICK_BLOCK_BLUE(21);
+
+    PLATFORM_GRASS_LEFT(20),
+    PLATFORM_GRASS_RIGHT(36),
+    PLATFORM_GRASS_CENTER(37),
+
+    BRICK_BLOCK_BLUE(21),
+
+    CLOUD_TRIPLE_LEFT(27),
+    CLOUD_TRIPLE_CENTER(28),
+    CLOUD_TRIPLE_RIGHT(29);
 
 
     private int n;
@@ -58,13 +74,13 @@ public enum TileType {
             case 7:
                 return CLOUD_LEFT;
             case 8:
-                return CLOUD_TRIPLE;
+                return PIPE_UP_RIGHT;
             case 9:
-                return PIPE_UP;
+                return PIPE_UP_LEFT;
             case 10:
-                return PIPE_LEFT;
+                return PIPE_LEFT_UP;
             case 11:
-                return PIPE_SMALL;
+                return PIPE_SMALL_UP;
             case 12:
                 return GROUND_BROWN;
             case 13:
@@ -82,7 +98,7 @@ public enum TileType {
             case 19:
                 return COIN;
             case 20:
-                return PLATFORM_GRASS;
+                return PLATFORM_GRASS_LEFT;
             case 21:
                 return BRICK_BLOCK_BLUE;
             case 22:
@@ -95,6 +111,28 @@ public enum TileType {
                 return CLOUD_CENTER;
             case 26:
                 return CLOUD_RIGHT;
+            case 27:
+                return CLOUD_TRIPLE_LEFT;
+            case 28:
+                return CLOUD_TRIPLE_CENTER;
+            case 29:
+                return CLOUD_TRIPLE_RIGHT;
+            case 30:
+                return PIPE_CENTER_LEFT;
+            case 31:
+                return PIPE_CENTER_RIGHT;
+            case 32:
+                return PIPE_LEFT_DOWN;
+            case 33:
+                return PIPE_LEFT_CENTER_UP;
+            case 34:
+                return PIPE_LEFT_CENTER_DOWN;
+            case 35:
+                return PIPE_SMALL_DOWN;
+            case 36:
+                return PLATFORM_GRASS_RIGHT;
+            case 37:
+                return PLATFORM_GRASS_CENTER;
             default:
                 return Empty;
 
