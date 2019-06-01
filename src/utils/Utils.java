@@ -1,5 +1,6 @@
 package utils;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -56,8 +57,8 @@ public class Utils {
 
         Graphics2D graphics = (Graphics2D)mirrored.getGraphics();
         AffineTransform transform = new AffineTransform();
-        transform.setToScale(1, -1);
-        transform.translate(0, -image.getHeight());
+        transform.setToScale(-1, 1);
+        transform.translate(-image.getWidth(), 0);
         graphics.setTransform(transform);
         graphics.drawImage(image, 0, 0, null);
         return mirrored;

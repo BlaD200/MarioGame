@@ -5,7 +5,6 @@ import display.Display;
 import game.level.Level;
 import graphics.TextureAtlas;
 import utils.Time;
-
 import java.awt.*;
 
 public class Game implements Runnable {
