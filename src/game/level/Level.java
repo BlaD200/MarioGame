@@ -44,18 +44,18 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.COIN));
 
         tiles.put(TileType.BUSH_CENTER, new Tile(atlas.cut(12 * TILE_SCALE, 11 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 3), TILE_IN_GAME_SCALE, TileType.BUSH_CENTER));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.BUSH_CENTER));
         tiles.put(TileType.BUSH_LEFT, new Tile(atlas.cut(11 * TILE_SCALE, 11 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 3), TILE_IN_GAME_SCALE, TileType.BUSH_LEFT));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.BUSH_LEFT));
         tiles.put(TileType.BUSH_RIGHT, new Tile(atlas.cut(13 * TILE_SCALE, 11 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 3), TILE_IN_GAME_SCALE, TileType.BUSH_RIGHT));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.BUSH_RIGHT));
 
         tiles.put(TileType.PLATFORM_GRASS_LEFT, new Tile(atlas.cut(8 * TILE_SCALE, 5 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 3), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_LEFT));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_LEFT));
         tiles.put(TileType.PLATFORM_GRASS_CENTER, new Tile(atlas.cut(8 * TILE_SCALE, 6 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 3), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_CENTER));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_CENTER));
         tiles.put(TileType.PLATFORM_GRASS_RIGHT, new Tile(atlas.cut(8 * TILE_SCALE, 7 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 3), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_RIGHT));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_RIGHT));
 
         tiles.put(TileType.CLOUD_UP_LEFT, new Tile(atlas.cut(0 * TILE_SCALE, 20 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
                 TILE_IN_GAME_SCALE, TileType.CLOUD_UP_LEFT));
@@ -77,15 +77,15 @@ public class Level {
                 TILE_IN_GAME_SCALE, TileType.CLOUD_TRIPLE_RIGHT));
 
         tiles.put(TileType.MOUNTAIN_LEFT, new Tile(atlas.cut(8 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
         tiles.put(TileType.MOUNTAIN_UP, new Tile(atlas.cut(9 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
         tiles.put(TileType.MOUNTAIN_RIGHT, new Tile(atlas.cut(10 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
         tiles.put(TileType.MOUNTAIN_CENTER, new Tile(atlas.cut(9 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_CENTER));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_CENTER));
         tiles.put(TileType.MOUNTAIN_CENTER_STONE, new Tile(atlas.cut(8 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_CENTER_STONE));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_CENTER_STONE));
 
         tiles.put(TileType.PIPE_CENTER_LEFT, new Tile(atlas.cut(0 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_CENTER_LEFT));
@@ -97,24 +97,24 @@ public class Level {
                 TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.PIPE_UP_RIGHT));
 
         tiles.put(TileType.PIPE_LEFT_UP, new Tile(atlas.cut(2 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_UP));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_UP));
         tiles.put(TileType.PIPE_LEFT_DOWN, new Tile(atlas.cut(2 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_DOWN));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_DOWN));
         tiles.put(TileType.PIPE_LEFT_CENTER_UP, new Tile(atlas.cut(3 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_CENTER_UP));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_CENTER_UP));
         tiles.put(TileType.PIPE_LEFT_CENTER_DOWN, new Tile(atlas.cut(3 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_CENTER_DOWN));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_CENTER_DOWN));
         tiles.put(TileType.PIPE_SMALL_UP, new Tile(atlas.cut(4 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.PIPE_SMALL_UP));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_SMALL_UP));
         tiles.put(TileType.PIPE_SMALL_DOWN, new Tile(atlas.cut(4 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.PIPE_SMALL_DOWN));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_SMALL_DOWN));
 
         tiles.put(TileType.CASTLE_BRICK, new Tile(atlas.cut(11 * TILE_SCALE, 0 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.CASTLE_BRICK));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.CASTLE_BRICK));
         tiles.put(TileType.CASTLE_RECT_HOLE, new Tile(atlas.cut(13 * TILE_SCALE, 2 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.CASTLE_RECT_HOLE));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.CASTLE_RECT_HOLE));
         tiles.put(TileType.CASTLE_OVAL_HOLE, new Tile(atlas.cut(12 * TILE_SCALE, 2 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.CASTLE_OVAL_HOLE));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.CASTLE_OVAL_HOLE));
 
 
         tileMap = Utils.levelParser("res\\level.lvl");
