@@ -108,7 +108,7 @@ public class Level {
                 TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.CASTLE_OVAL_HOLE));
 
 
-        tileMap = Utils.levelParser("res\\level.lvl");
+        tileMap = Utils.levelParser("res\\levels\\newLevel.lvl");
     }
 
 
@@ -125,5 +125,10 @@ public class Level {
                 tiles.get(TileType.fromNumeric(tileMap[i][j])).render(g, j * SCALED_TILE_SIZE, i * SCALED_TILE_SIZE);
             }
         }
+    }
+
+
+    public Map<TileType, Tile> getTiles() {
+        return tiles;
     }
 }
