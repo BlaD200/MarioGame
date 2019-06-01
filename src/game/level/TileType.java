@@ -5,9 +5,13 @@ public enum TileType {
     BRICK_BLOCK_BROWN(1),
     COIN_BLOCK(2),
     BUSH(3),
+
     MOUNTAIN_LEFT(4),
     MOUNTAIN_UP(5),
+    MOUNTAIN_CENTER(22),
+    MOUNTAIN_CENTER_STONE(23),
     MOUNTAIN_RIGHT(6),
+
     CLOUD(7),
     CLOUD_TRIPLE(8),
     PIPE_UP(9),
@@ -77,6 +81,10 @@ public enum TileType {
                 return PLATFORM_GRASS;
             case 21:
                 return BRICK_BLOCK_BLUE;
+            case 22:
+                return MOUNTAIN_CENTER;
+            case 23:
+                return MOUNTAIN_CENTER_STONE;
             default:
                 return Empty;
 
