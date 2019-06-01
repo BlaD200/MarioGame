@@ -33,8 +33,8 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.COIN_BLOCK));
         tiles.put(TileType.BUSH, new Tile(atlas.cut(12 * TILE_SCALE, 10 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE * 3), TILE_IN_GAME_SCALE, TileType.BUSH));
-        tiles.put(TileType.CLOUD, new Tile(atlas.cut(0 * TILE_SCALE, 22 * TILE_SCALE, TILE_SCALE * 3, TILE_SCALE),
-                TILE_IN_GAME_SCALE, TileType.CLOUD));
+        tiles.put(TileType.CLOUD_RIGHT, new Tile(atlas.cut(0 * TILE_SCALE, 22 * TILE_SCALE, TILE_SCALE * 3, TILE_SCALE),
+                TILE_IN_GAME_SCALE, TileType.CLOUD_RIGHT));
         tiles.put(TileType.MOUNTAIN_LEFT, new Tile(atlas.cut(8 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
         tiles.put(TileType.MOUNTAIN_UP, new Tile(atlas.cut(9 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
