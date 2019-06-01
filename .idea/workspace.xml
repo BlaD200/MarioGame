@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53202028-b97e-45ed-8d3e-819b6c95cdef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/res/textures/character_textures.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/graphics/AnimatedSprite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/levelEditor/LevelEditor.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/levelEditor/LevelEditor.java" afterDir="false" />
+    <list default="true" id="53202028-b97e-45ed-8d3e-819b6c95cdef" name="Default Changelist" comment="Minor fixes in level redactor.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarioGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MarioGame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioGame/display/Display.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioGame/display/Display.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MarioGame/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioGame/game/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioGame/game/Player$Heading.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioGame/game/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioGame/game/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MarioGame/game/level/Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioGame/game/level/Level.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MarioGame/game/level/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioGame/game/level/Tile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MarioGame/game/level/TileType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioGame/game/level/TileType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioGame/graphics/Sprite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioGame/graphics/Sprite.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MarioGame/level.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioGame/level.lvl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/level.lvl" beforeDir="false" afterPath="$PROJECT_DIR$/res/levels/level.lvl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/lvl_textures.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/lvl_textures.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/texture_atlas.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/textures/texture_atlas.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Player.java" afterDir="false" />
+    </list>
+    <list id="33637a04-c9be-4a8f-9041-ff11c677d747" name="Revert &quot;Minor fixes in level redactor.&quot;" comment="Revert &quot;Minor fixes in level redactor.&quot;&#10;&#10;This reverts commit 487d1ccc">
+      <change beforePath="$PROJECT_DIR$/out/production/MarioGame/utils/ResourceLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioGame/utils/ResourceLoader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/level/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/level/Level.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/level/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/level/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphics/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/level/TileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/level/TileType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/ResourceLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ResourceLoader.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,46 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/levelEditor/LevelEditor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="214" column="8" selection-start-line="214" selection-start-column="8" selection-end-line="214" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2157#2158#0" expanded="true" />
-                <element signature="e#2215#2216#0" expanded="true" />
-                <element signature="e#5218#5737#0" expanded="true" />
-                <element signature="e#5736#5737#0" expanded="true" />
-                <element signature="e#5957#6326#0" expanded="true" />
-                <element signature="e#6325#6326#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/levelEditor/LevelEditor.form">
-          <provider selected="true" editor-type-id="ui-designer" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="21" column="88" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/graphics/AnimatedSprite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -85,26 +40,52 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/level/TileType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1193">
-              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+            <state relative-caret-position="324">
+              <caret line="147" column="1" selection-start-line="147" selection-start-column="1" selection-end-line="147" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/levelEditor/LevelEditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="102" column="36" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
               <folding>
-                <element signature="e#994#995#0" expanded="true" />
-                <element signature="e#1020#1021#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/game/level/Level.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="110" column="54" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8269#8270#0" expanded="true" />
+                <element signature="e#8297#8298#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/level/Level.java">
+        <entry file="file://$PROJECT_DIR$/src/game/level/Tile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="110" column="50" selection-start-line="110" selection-start-column="50" selection-end-line="110" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#8258#8259#0" expanded="true" />
-                <element signature="e#8286#8287#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/ResourceLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -134,19 +115,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/game/level/TileType.java" />
         <option value="$PROJECT_DIR$/src/graphics/Sprite.java" />
         <option value="$PROJECT_DIR$/src/utils/Utils.java" />
         <option value="$PROJECT_DIR$/src/game/Player.java" />
         <option value="$PROJECT_DIR$/src/graphics/AnimatedSprite.java" />
-        <option value="$PROJECT_DIR$/src/game/level/Tile.java" />
         <option value="$PROJECT_DIR$/res/level.lvl" />
         <option value="$PROJECT_DIR$/src/game/Game.java" />
-        <option value="$PROJECT_DIR$/src/game/level/Level.java" />
         <option value="$PROJECT_DIR$/src/test/PanelResize.java" />
         <option value="$PROJECT_DIR$/src/test/GameSize.java" />
         <option value="$PROJECT_DIR$/src/levelEditor/LevelEditor.form" />
         <option value="$PROJECT_DIR$/src/levelEditor/LevelEditor.java" />
+        <option value="$PROJECT_DIR$/src/game/level/TileType.java" />
+        <option value="$PROJECT_DIR$/src/game/level/Tile.java" />
+        <option value="$PROJECT_DIR$/src/utils/ResourceLoader.java" />
+        <option value="$PROJECT_DIR$/src/game/level/Level.java" />
       </list>
     </option>
   </component>
@@ -162,7 +144,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -173,13 +154,12 @@
             <path>
               <item name="MarioGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="MarioGame" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MarioGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="MarioGame" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="levels" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MarioGame" type="b2602c69:ProjectViewProjectNode" />
@@ -209,18 +189,13 @@
               <item name="MarioGame" type="b2602c69:ProjectViewProjectNode" />
               <item name="MarioGame" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="levelEditor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MarioGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MarioGame" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -238,12 +213,12 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/.idea/workspace.xml" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vladyslav Synytsyn\OneDrive\Documents\IdeaProjects\MarioGame\res" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Vladyslav Synytsyn\OneDrive\Documents\IdeaProjects\MarioGame\res\levels" />
       <recent name="C:\Users\Vladyslav Synytsyn\OneDrive\Documents\IdeaProjects\MarioGame\res\textures" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Vladyslav Synytsyn\OneDrive\Documents\IdeaProjects\MarioGame\res" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -258,7 +233,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.LevelEditor">
     <configuration name="GameSize" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.GameSize" />
       <module name="MarioGame" />
@@ -326,8 +301,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.LevelEditor" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ResizablePanel" />
         <item itemvalue="Application.GameSize" />
         <item itemvalue="Application.PanelResize" />
@@ -353,36 +328,42 @@
       <option name="project" value="LOCAL" />
       <updated>1559407804931</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Minor fixes in level redactor.">
+      <created>1559432469260</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559432469260</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28002000" />
+    <option name="totallyTimeSpent" value="29287000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13932292" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.14362416" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3319616" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33144477" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39917696" />
-      <window_info anchor="bottom" id="Version Control" order="5" weight="0.32784638" />
+      <window_info anchor="bottom" id="Version Control" order="5" weight="0.32719547" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Message" order="8" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32921812" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.37311384" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.5736544" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24966443" />
@@ -428,6 +409,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -470,7 +461,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Level changed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Level changed." />
+    <MESSAGE value="Minor fixes in level redactor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes in level redactor." />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -497,9 +489,7 @@
     <entry file="file://$PROJECT_DIR$/res/textures/texture_atlas.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/characters_textures.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/res/characters_textures.png" />
     <entry file="file://$PROJECT_DIR$/src/graphics/SpriteSheet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -510,16 +500,7 @@
     <entry file="file://$PROJECT_DIR$/res/textures/character_textures.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphics/AnimatedSprite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphics/AnimatedSprite.java" />
     <entry file="file://$PROJECT_DIR$/src/game/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -529,17 +510,6 @@
             <element signature="e#1013#1014#0" expanded="true" />
             <element signature="e#1065#1066#0" expanded="true" />
             <element signature="e#3115#3116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/level/Tile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-          <folding>
-            <element signature="e#586#587#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -555,17 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/level/TileType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1193">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-          <folding>
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/textures/lvl_textures.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -576,31 +535,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/levelEditor/j.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/levelEditor/j.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/levels/newLevel.lvl">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/level/Level.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="110" column="50" selection-start-line="110" selection-start-column="50" selection-end-line="110" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8258#8259#0" expanded="true" />
-            <element signature="e#8286#8287#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/levelEditor/j.java" />
+    <entry file="file://$PROJECT_DIR$/src/levelEditor/j.form" />
+    <entry file="file://$PROJECT_DIR$/res/levels/newLevel.lvl" />
     <entry file="file://$PROJECT_DIR$/src/display/Display.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -620,8 +557,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="21" column="88" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="88" />
+        <state relative-caret-position="255">
+          <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
         </state>
       </provider>
     </entry>
@@ -652,18 +589,48 @@
     <entry file="file://$PROJECT_DIR$/src/levelEditor/LevelEditor.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/level/TileType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="147" column="1" selection-start-line="147" selection-start-column="1" selection-end-line="147" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/level/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/levelEditor/LevelEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="214" column="8" selection-start-line="214" selection-start-column="8" selection-end-line="214" selection-end-column="8" />
+        <state relative-caret-position="141">
+          <caret line="102" column="36" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2157#2158#0" expanded="true" />
-            <element signature="e#2215#2216#0" expanded="true" />
-            <element signature="e#5218#5737#0" expanded="true" />
-            <element signature="e#5736#5737#0" expanded="true" />
-            <element signature="e#5957#6326#0" expanded="true" />
-            <element signature="e#6325#6326#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/ResourceLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/level/Level.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="110" column="54" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8269#8270#0" expanded="true" />
+            <element signature="e#8297#8298#0" expanded="true" />
           </folding>
         </state>
       </provider>
