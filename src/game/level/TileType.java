@@ -4,7 +4,10 @@ public enum TileType {
     Empty(0),
     BRICK_BLOCK_BROWN(1),
     COIN_BLOCK(2),
-    BUSH(3),
+
+    BUSH_CENTER(3),
+    BUSH_LEFT(40),
+    BUSH_RIGHT(41),
 
     MOUNTAIN_LEFT(4),
     MOUNTAIN_UP(5),
@@ -19,8 +22,8 @@ public enum TileType {
     CLOUD_CENTER(25),
     CLOUD_RIGHT(26),
 
-    PIPE_UP_RIGHT(8),
-    PIPE_UP_LEFT(9),
+    PIPE_UP_RIGHT(9),
+    PIPE_UP_LEFT(8),
     PIPE_CENTER_LEFT(30),
     PIPE_CENTER_RIGHT(31),
 
@@ -66,7 +69,7 @@ public enum TileType {
             case 2:
                 return COIN_BLOCK;
             case 3:
-                return BUSH;
+                return BUSH_CENTER;
             case 4:
                 return MOUNTAIN_LEFT;
             case 5:
@@ -76,9 +79,9 @@ public enum TileType {
             case 7:
                 return CLOUD_LEFT;
             case 8:
-                return PIPE_UP_RIGHT;
-            case 9:
                 return PIPE_UP_LEFT;
+            case 9:
+                return PIPE_UP_RIGHT;
             case 10:
                 return PIPE_LEFT_UP;
             case 11:
@@ -139,6 +142,10 @@ public enum TileType {
                 return CLOUD_UP_LEFT;
             case 39:
                 return CLOUD_UP_RIGHT;
+            case 40:
+                return BUSH_LEFT;
+            case 41:
+                return BUSH_RIGHT;
             default:
                 return Empty;
 

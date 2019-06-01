@@ -1,5 +1,7 @@
 package utils;
 
+import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -47,6 +49,18 @@ public class Utils {
         }
 
         return result;
+    }
+
+    public static BufferedImage mirrorEntity(BufferedImage image){
+        BufferedImage mirrored = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D graphics = (Graphics2D)mirrored.getGraphics();
+        AffineTransform transform = new AffineTransform();
+        transform.setToScale(1, -1);
+        transform.translate(0, -image.getHeight());
+        graphics.setTransform(transform);
+        graphics.drawImage(image, 0, 0, null);
+        return mirrored;
     }
 
 
