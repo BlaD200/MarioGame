@@ -35,12 +35,18 @@ public class Level {
                 TILE_SCALE * 3), TILE_IN_GAME_SCALE, TileType.BUSH));
         tiles.put(TileType.CLOUD_RIGHT, new Tile(atlas.cut(0 * TILE_SCALE, 22 * TILE_SCALE, TILE_SCALE * 3, TILE_SCALE),
                 TILE_IN_GAME_SCALE, TileType.CLOUD_RIGHT));
+
         tiles.put(TileType.MOUNTAIN_LEFT, new Tile(atlas.cut(8 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
+                TILE_SCALE ), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
         tiles.put(TileType.MOUNTAIN_UP, new Tile(atlas.cut(9 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_UP));
         tiles.put(TileType.MOUNTAIN_RIGHT, new Tile(atlas.cut(10 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE * 2), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_LEFT));
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_RIGHT));
+        tiles.put(TileType.MOUNTAIN_CENTER, new Tile(atlas.cut(9 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_CENTER));
+        tiles.put(TileType.MOUNTAIN_CENTER_STONE, new Tile(atlas.cut(8 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_CENTER_STONE));
+
 
 
         tileMap = Utils.levelParser("res\\level.lvl");
