@@ -23,7 +23,7 @@ public class Level {
     public Level(TextureAtlas atlas) {
         tiles = new HashMap<>();
 
-        tiles.put(TileType.Empty, new Tile(atlas.cut(14 * TILE_SCALE, 20 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
+        tiles.put(TileType.Empty, new Tile(atlas.cut(20 * TILE_SCALE, 25 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
                 TILE_IN_GAME_SCALE, TileType.Empty));
         tiles.put(TileType.GROUND_BROWN, new Tile(atlas.cut(0 * TILE_SCALE, 0 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.BRICK_BLOCK_BROWN));
