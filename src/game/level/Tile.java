@@ -26,4 +26,8 @@ public class Tile {
     protected TileType getType() {
         return type;
     }
+
+    public BufferedImage getImage(){
+        return image;
+    }
 }

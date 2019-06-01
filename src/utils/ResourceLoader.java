@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ResourceLoader {
 
-    public static final String	PATH	= "res/";
+    public static final String	PATH	= "res\\textures\\";
 
     public static BufferedImage loadImage(String fileName) {
 
