@@ -12,8 +12,10 @@ public enum TileType {
     MOUNTAIN_CENTER_STONE(23),
     MOUNTAIN_RIGHT(6),
 
+    CLOUD_UP_LEFT(38),
+    CLOUD_UP_CENTER(24),
+    CLOUD_UP_RIGHT(39),
     CLOUD_LEFT(7),
-    CLOUD_UP(24),
     CLOUD_CENTER(25),
     CLOUD_RIGHT(26),
 
@@ -106,7 +108,7 @@ public enum TileType {
             case 23:
                 return MOUNTAIN_CENTER_STONE;
             case 24:
-                return CLOUD_UP;
+                return CLOUD_UP_CENTER;
             case 25:
                 return CLOUD_CENTER;
             case 26:
@@ -133,6 +135,10 @@ public enum TileType {
                 return PLATFORM_GRASS_RIGHT;
             case 37:
                 return PLATFORM_GRASS_CENTER;
+            case 38:
+                return CLOUD_UP_LEFT;
+            case 39:
+                return CLOUD_UP_RIGHT;
             default:
                 return Empty;
 
