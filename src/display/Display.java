@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
 
-public abstract class Display {
+public class Display {
 
     private static boolean			created	= false;
     private static JFrame			window;

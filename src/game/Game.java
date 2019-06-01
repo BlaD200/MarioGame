@@ -13,7 +13,7 @@ public class Game implements Runnable {
     public static final int		WIDTH			= 800;
     public static final int		HEIGHT			= 600;
     public static final String	TITLE			= "Tanks";
-    public static final int		CLEAR_COLOR		= 0xff000000;
+    public static final int		CLEAR_COLOR		= 0xff6B8BFE;
     public static final int		NUM_BUFFERS		= 3;
 
     public static final float	UPDATE_RATE		= 60.0f;
@@ -32,6 +32,7 @@ public class Game implements Runnable {
 
     public Game() {
         running = false;
+        System.out.println(new Color(0x6B8BFE).getRGB());
         Display.create(WIDTH, HEIGHT, TITLE, CLEAR_COLOR, NUM_BUFFERS);
         graphics = Display.getGraphics();
         input = new Input();
