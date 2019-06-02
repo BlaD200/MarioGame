@@ -100,7 +100,7 @@ public class LevelEditor extends JFrame {
 
 
     private void createUIComponents() {
-        Level level = new Level(new TextureAtlas(Game.ATLAS_FILE_NAME));
+        Level level = new Level(new TextureAtlas(Game.LEVEL_ATLAS_FILE_NAME), new TextureAtlas(Game.OBJECT_ATLAS_FILE_NAME));
         tiles = level.getTiles();
 
         int iconIndent = 2;
