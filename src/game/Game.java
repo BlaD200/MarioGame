@@ -19,13 +19,15 @@ public class Game implements Runnable {
     public static final float	UPDATE_INTERVAL	= Time.SECOND / UPDATE_RATE;
     public static final long	IDLE_TIME		= 1;
 
-    public static final String	ATLAS_FILE_NAME	= "lvl_textures.png";
+    public static final String LVL_TEXTURES_ATLAS_FILE_NAME = "lvl_textures.png";
+    public static final String PLAYER_TEXTURES_ATLAS_FILE_NAME = "character_textures.png";
 
     private boolean				running;
     private Thread				gameThread;
     private Graphics2D			graphics;
     private Input				input;
-    private TextureAtlas		atlas;
+    private TextureAtlas        lvlAtlas;
+    private TextureAtlas        playerAtlas;
     private Player				player;
     private Level               level;
 
@@ -35,9 +37,11 @@ public class Game implements Runnable {
         graphics = Display.getGraphics();
         input = new Input();
         Display.addInputListener(input);
-        atlas = new TextureAtlas(ATLAS_FILE_NAME);
-        player = new Player(300, 300, 2, 3, 5, 10, atlas);
-        level = new Level(atlas);
+
+        lvlAtlas = new TextureAtlas(LVL_TEXTURES_ATLAS_FILE_NAME);
+        playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
+        level = new Level(lvlAtlas);
+        player = new Player(300, 300, 3, 3, 5, 10, playerAtlas);
     }
 
     public synchronized void start() {

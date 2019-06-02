@@ -117,7 +117,7 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.CASTLE_OVAL_HOLE));
 
 
-        tileMap = Utils.levelParser("res\\levels\\level.lvl");
+        tileMap = Utils.levelParser("res\\levels\\testLevel.lvl");
     }
 
 

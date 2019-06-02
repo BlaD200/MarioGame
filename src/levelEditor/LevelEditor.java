@@ -100,7 +100,7 @@ public class LevelEditor extends JFrame {
 
 
     private void createUIComponents() {
-        Level level = new Level(new TextureAtlas(Game.ATLAS_FILE_NAME));
+        Level level = new Level(new TextureAtlas(Game.LVL_TEXTURES_ATLAS_FILE_NAME));
         tiles = level.getTiles();
 
         int iconIndent = 2;
@@ -164,6 +164,15 @@ public class LevelEditor extends JFrame {
         int height = 800;
         levelPanel.setPreferredSize(new Dimension(width, height));
         levelPanel.setBackground(new Color(0x6B8BFE));
+
+        levelPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                widthIndex = e.getX() / Level.TILE_SCALE;
+                heightIndex = e.getY() / Level.TILE_SCALE;
+                addTile();
+            }
+        });
 
         levelPanel.addMouseMotionListener(new MouseAdapter() {
             @Override
