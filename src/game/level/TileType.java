@@ -48,6 +48,9 @@ public enum TileType {
     PLATFORM_GRASS_CENTER(37),
 
     BRICK_BLOCK_BLUE(21),
+    BAR_TOP(42),
+    BAR(43),
+    FLAG(44),
 
     CLOUD_TRIPLE_LEFT(27),
     CLOUD_TRIPLE_CENTER(28),
@@ -146,6 +149,12 @@ public enum TileType {
                 return BUSH_LEFT;
             case 41:
                 return BUSH_RIGHT;
+            case 42:
+                return BAR_TOP;
+            case 43:
+                return BAR;
+            case 44:
+                return FLAG;
             default:
                 return Empty;
 
