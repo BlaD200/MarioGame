@@ -18,7 +18,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -32,6 +31,8 @@ public class LevelEditor extends JFrame {
     private JTextField levelNameTextField;
     private JScrollPane levelScrollPane;
     private JButton resizeButton;
+    private JButton exitButton;
+    private static LevelEditor instance;
 
     private int levelWidth;
     private int levelHeight;
@@ -82,6 +83,17 @@ public class LevelEditor extends JFrame {
                 JOptionPane.showMessageDialog(this, "Level created failed.", "Level create",
                         JOptionPane.ERROR_MESSAGE);
         });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int option = JOptionPane.showConfirmDialog(null, "<html>Are you sure you want to exit? <br>" +
+                        " You won't be able to edit this level in future</html>", "Exit",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (option == 0)
+                    dispose();
+
+            }
+        });
 
         pack();
         setLocationRelativeTo(null);
@@ -91,11 +103,11 @@ public class LevelEditor extends JFrame {
 
 
     public static void main(String[] args) {
-        try {
-            SwingUtilities.invokeAndWait(LevelEditor::new);
-        } catch (InvocationTargetException | InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            SwingUtilities.invokeAndWait(LevelEditor::new);
+//        } catch (InvocationTargetException | InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
 
@@ -221,6 +233,12 @@ public class LevelEditor extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public static void getInstance() {
+        if (instance == null) {
+            instance = new LevelEditor();
         }
     }
 }
