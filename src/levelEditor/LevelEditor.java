@@ -89,15 +89,19 @@ public class LevelEditor extends JFrame {
                 int option = JOptionPane.showConfirmDialog(null, "<html>Are you sure you want to exit? <br>" +
                         " You won't be able to edit this level in future</html>", "Exit",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (option == 0)
+                if (option == 0) {
                     dispose();
+                    instance = null;
+                }
 
             }
         });
 
-        pack();
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        pack();
+//        setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
+//        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
@@ -239,6 +243,7 @@ public class LevelEditor extends JFrame {
     public static void getInstance() {
         if (instance == null) {
             instance = new LevelEditor();
-        }
+        } else
+            instance.toFront();
     }
 }

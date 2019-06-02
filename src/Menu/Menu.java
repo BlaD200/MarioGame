@@ -2,11 +2,15 @@ package Menu;
 
 import levelEditor.LevelEditor;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Menu extends JFrame {
     private JPanel root;
@@ -15,7 +19,7 @@ public class Menu extends JFrame {
     private JButton createLvlBtn;
     private JButton resumeBtn;
     private JLabel exitBtn;
-//    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private JPanel backgroundPanel;
 
     public Menu() {
         setUp();
@@ -42,7 +46,6 @@ public class Menu extends JFrame {
         });
 
         add(root);
-//        setPreferredSize(screenSize);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
@@ -54,5 +57,15 @@ public class Menu extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Menu::new);
+    }
+
+    private void createUIComponents() {
+        BufferedImage myImage = null;
+        try {
+            myImage = ImageIO.read(new File("res/MenuBackground.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        backgroundPanel = new MyPanel(myImage);
     }
 }
