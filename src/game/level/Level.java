@@ -69,11 +69,11 @@ public class Level {
                 TILE_IN_GAME_SCALE, TileType.CLOUD_CENTER));
         tiles.put(TileType.CLOUD_RIGHT, new Tile(atlas.cut(2 * TILE_SCALE, 21 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
                 TILE_IN_GAME_SCALE, TileType.CLOUD_RIGHT));
-        tiles.put(TileType.CLOUD_TRIPLE_LEFT, new Tile(atlas.cut(9 * TILE_SCALE, 20 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
+        tiles.put(TileType.CLOUD_TRIPLE_LEFT, new Tile(atlas.cut(8 * TILE_SCALE, 20 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
                 TILE_IN_GAME_SCALE, TileType.CLOUD_TRIPLE_LEFT));
-        tiles.put(TileType.CLOUD_TRIPLE_CENTER, new Tile(atlas.cut(10 * TILE_SCALE, 20 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
+        tiles.put(TileType.CLOUD_TRIPLE_CENTER, new Tile(atlas.cut(9 * TILE_SCALE, 20 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
                 TILE_IN_GAME_SCALE, TileType.CLOUD_TRIPLE_CENTER));
-        tiles.put(TileType.CLOUD_TRIPLE_RIGHT, new Tile(atlas.cut(11 * TILE_SCALE, 20 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
+        tiles.put(TileType.CLOUD_TRIPLE_RIGHT, new Tile(atlas.cut(10 * TILE_SCALE, 20 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
                 TILE_IN_GAME_SCALE, TileType.CLOUD_TRIPLE_RIGHT));
 
         tiles.put(TileType.MOUNTAIN_LEFT, new Tile(atlas.cut(8 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
