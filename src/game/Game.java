@@ -5,7 +5,6 @@ import display.Display;
 import game.level.Level;
 import graphics.TextureAtlas;
 import utils.Time;
-
 import java.awt.*;
 
 public class Game implements Runnable {
@@ -32,7 +31,6 @@ public class Game implements Runnable {
 
     public Game() {
         running = false;
-        System.out.println(new Color(0x6B8BFE).getRGB());
         Display.create(WIDTH, HEIGHT, TITLE, CLEAR_COLOR, NUM_BUFFERS);
         graphics = Display.getGraphics();
         input = new Input();
