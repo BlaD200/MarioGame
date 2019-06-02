@@ -18,6 +18,7 @@ public class Level {
 
     private int[][] tileMap;
     private Map<TileType, Tile> tiles;
+    private static float offsetX = 0;
 
 
     public Level(TextureAtlas level, TextureAtlas object) {
@@ -124,7 +125,7 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.FLAG));
 
 
-        tileMap = Utils.levelParser("res\\levels\\level.lvl");
+        tileMap = Utils.levelParser("res\\levels\\Level1.lvl");
     }
 
 
@@ -138,11 +139,21 @@ public class Level {
             for (int j = 0; j < tileMap[i].length; j++) {
                 if (tiles.get(TileType.fromNumeric(tileMap[i][j])) == null)
                     continue;
-                tiles.get(TileType.fromNumeric(tileMap[i][j])).render(g, j * SCALED_TILE_SIZE, i * SCALED_TILE_SIZE);
+                if (TileType.fromNumeric(tileMap[i][j]) == TileType.Empty)
+                    continue;
+                tiles.get(TileType.fromNumeric(tileMap[i][j])).render(g, (int) (j * SCALED_TILE_SIZE + offsetX), i * SCALED_TILE_SIZE);
             }
         }
     }
 
+
+    public static void setOffsetX(float offsetX) {
+        Level.offsetX = offsetX;
+    }
+
+    public static float getOffsetX() {
+        return Level.offsetX;
+    }
 
     public Map<TileType, Tile> getTiles() {
         return tiles;

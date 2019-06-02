@@ -39,7 +39,7 @@ public class Game implements Runnable {
         Display.addInputListener(input);
         level_atlas = new TextureAtlas(LEVEL_ATLAS_FILE_NAME);
         object_atlas = new TextureAtlas(OBJECT_ATLAS_FILE_NAME);
-        player = new Player(300, 300, 2, 3, 5, 10, level_atlas);
+        player = new Player(50, 0, 2, 3, 5, 10, level_atlas);
         level = new Level(level_atlas, object_atlas);
     }
 

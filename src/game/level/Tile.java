@@ -27,7 +27,7 @@ public class Tile {
         return type;
     }
 
-    public BufferedImage getImage(){
+    public BufferedImage getImage() {
         return image;
     }
 }

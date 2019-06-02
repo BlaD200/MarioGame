@@ -85,5 +85,4 @@ public class Display {
     public static void addInputListener(Input inputListener) {
         window.add(inputListener);
     }
-
 }

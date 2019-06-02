@@ -1,6 +1,9 @@
 package game;
 
 import IO.Input;
+import display.Display;
+import game.level.Level;
+import game.level.Tile;
 import graphics.Sprite;
 import graphics.SpriteSheet;
 import graphics.TextureAtlas;
@@ -68,9 +71,13 @@ public class Player extends Entity {
 
         float newX = x;
         float newY = y;
+        float newXOffset = Level.getOffsetX();
 
         if (input.getKey(KeyEvent.VK_RIGHT)) {
-            newX += speed;
+            if (x >= Game.WIDTH / 2.5)
+                newXOffset -= speed;
+            else
+                newX += speed;
             heading = Heading.EAST;
         }
         if (input.getKey(KeyEvent.VK_LEFT)){
@@ -86,20 +93,15 @@ public class Player extends Entity {
 
         if (newX < 0) {
             newX = 0;
-        } else if (newX >= Game.WIDTH - SPRITE_SCALE * scale) {
-            newX = Game.WIDTH - SPRITE_SCALE * scale;
         }
 
-        if (newY < 0) {
-            newY = 0;
-        } else if (newY >= Game.HEIGHT - SPRITE_SCALE * scale) {
+        if (newY >= Game.HEIGHT - SPRITE_SCALE * scale) {
             newY = Game.HEIGHT - SPRITE_SCALE * scale;
-
         }
 
+        Level.setOffsetX(newXOffset);
         x = newX;
         y = newY;
-
     }
 
     @Override
