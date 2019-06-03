@@ -46,6 +46,8 @@ public class LevelEditor extends JFrame {
 
     private int[][] tileMap;
 
+    private static int levelCounter = 4;
+
 
     private LevelEditor() {
         getContentPane().add(rootPanel);
@@ -76,11 +78,15 @@ public class LevelEditor extends JFrame {
         });
 
         saveLevelButton.addActionListener(e -> {
-            if (saveLevel(levelNameTextField.getText()))
+            if (saveLevel(levelNameTextField.getText())) {
                 JOptionPane.showMessageDialog(this, "Level created successful.", "Level create",
                         JOptionPane.INFORMATION_MESSAGE);
+                levelCounter++;
+            }
             else
-                JOptionPane.showMessageDialog(this, "Level created failed.", "Level create",
+                JOptionPane.showMessageDialog(this,
+                        "Level created failed (probably you name the level with already existing name)",
+                        "Level create",
                         JOptionPane.ERROR_MESSAGE);
         });
         exitButton.addActionListener(new ActionListener() {
@@ -223,9 +229,10 @@ public class LevelEditor extends JFrame {
 
     private boolean saveLevel(String levelName) {
         String lvlPath = "res\\levels\\";
+        if (levelName.equals("Level_1") || levelName.equals("Level_2") || levelName.equals("Level_3") || levelName.equals("Level_4"))
+            return false;
         if (levelName.isEmpty())
             levelName = "newLevel";
-
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(lvlPath + levelName + ".lvl")))) {
             for (int[] ints : tileMap) {
                 for (int anInt : ints) {
@@ -245,5 +252,13 @@ public class LevelEditor extends JFrame {
             instance = new LevelEditor();
         } else
             instance.toFront();
+    }
+
+    public static void decreaseLevelCounter() {
+        levelCounter--;
+    }
+
+    public static int getLevelCounter() {
+        return levelCounter;
     }
 }
