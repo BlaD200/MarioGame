@@ -21,6 +21,7 @@ public class Game implements Runnable {
 
     public static final String LVL_TEXTURES_ATLAS_FILE_NAME = "lvl_textures.png";
     public static final String PLAYER_TEXTURES_ATLAS_FILE_NAME = "character_textures.png";
+    public static final String OBJECT_ATLAS_FILE_NAME = "object_texture.png";
 
     private boolean				running;
     private Thread				gameThread;
@@ -28,6 +29,7 @@ public class Game implements Runnable {
     private Input				input;
     private TextureAtlas        lvlAtlas;
     private TextureAtlas        playerAtlas;
+    private TextureAtlas        objectAtlas;
     private Player				player;
     private Level               level;
 
@@ -40,8 +42,9 @@ public class Game implements Runnable {
 
         lvlAtlas = new TextureAtlas(LVL_TEXTURES_ATLAS_FILE_NAME);
         playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
-        level = new Level(lvlAtlas);
-        player = new Player(300, 300, 3, 3, 5, 10, playerAtlas);
+        objectAtlas = new TextureAtlas(OBJECT_ATLAS_FILE_NAME);
+        level = new Level(lvlAtlas, objectAtlas);
+        player = new Player(50, 0, 3, 3, 5, 10, playerAtlas);
     }
 
     public synchronized void start() {

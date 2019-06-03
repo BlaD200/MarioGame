@@ -2,6 +2,9 @@ package game;
 
 import IO.Input;
 import graphics.AnimatedSprite;
+import display.Display;
+import game.level.Level;
+import game.level.Tile;
 import graphics.Sprite;
 import graphics.TextureAtlas;
 import utils.Utils;
@@ -24,6 +27,7 @@ public class Player extends Entity {
     private float gravity;
     private float jumpPower;
     private int jumpCount;
+
     public Player(float x, float y, float scale, float speed, float gravity, float jumpPower, TextureAtlas atlas) {
         super(EntityType.Player, x, y);
 
@@ -69,6 +73,7 @@ public class Player extends Entity {
 
         float newX = x;
         float newY = y;
+        float newXOffset = Level.getOffsetX();
 
         Heading newHeading;
 
@@ -80,6 +85,13 @@ public class Player extends Entity {
                 spriteMap.get(heading).resetAnimation();
             }
         } else if (input.getKey(KeyEvent.VK_LEFT)) {
+            if (x >= Game.WIDTH / 2.5)
+                newXOffset -= speed;
+            else
+                newX += speed;
+            heading = Heading.EAST;
+        }
+        if (input.getKey(KeyEvent.VK_LEFT)){
             newX -= speed;
             newHeading = Heading.WEST;
             if (newHeading != heading) {
@@ -102,20 +114,15 @@ public class Player extends Entity {
 
         if (newX < 0) {
             newX = 0;
-        } else if (newX >= Game.WIDTH - SPRITE_SCALE * scale) {
-            newX = Game.WIDTH - SPRITE_SCALE * scale;
         }
 
-        if (newY < 0) {
-            newY = 0;
-        } else if (newY >= Game.HEIGHT - SPRITE_SCALE * scale) {
+        if (newY >= Game.HEIGHT - SPRITE_SCALE * scale) {
             newY = Game.HEIGHT - SPRITE_SCALE * scale;
-
         }
 
+        Level.setOffsetX(newXOffset);
         x = newX;
         y = newY;
-
     }
 
 
