@@ -1,4 +1,4 @@
-package Menu;
+package menu;
 
 import utils.ResourceLoader;
 

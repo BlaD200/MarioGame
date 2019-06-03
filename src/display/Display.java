@@ -28,13 +28,15 @@ public class Display {
             return;
 
         window = new JFrame(title);
+//        window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        window.setUndecorated(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         content = new Canvas();
 
         Dimension size = new Dimension(width, height);
         content.setPreferredSize(size);
 
-        window.setResizable(false);
+//        window.setResizable(false);
         window.getContentPane().add(content);
         window.pack();
         window.setLocationRelativeTo(null);
