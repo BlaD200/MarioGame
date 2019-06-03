@@ -122,7 +122,7 @@ public class Level {
         tiles.put(TileType.FLAG, new Tile(object.cut(8 * TILE_SCALE, 2 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.FLAG));
 
-        tileMap = Utils.levelParser("res\\levels\\Level1.lvl");
+        tileMap = Utils.levelParser("res\\levels\\Level_1.lvl");
 
         Game.setSize(new Dimension(Game.width, tileMap.length * 16 * TILE_IN_GAME_SCALE));
     }
