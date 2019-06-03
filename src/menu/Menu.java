@@ -1,4 +1,4 @@
-package Menu;
+package menu;
 
 import game.Game;
 import levelEditor.LevelEditor;
@@ -13,7 +13,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Menu extends JFrame {

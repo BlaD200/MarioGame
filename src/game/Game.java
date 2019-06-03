@@ -9,9 +9,9 @@ import java.awt.*;
 
 public class Game implements Runnable {
 
-    public static final int		WIDTH			= 800;
-    public static final int		HEIGHT			= 600;
-    public static final String	TITLE			= "Tanks";
+    public static int           width  = 1280;
+    public static int           height = 720;
+    public static final String	TITLE			= "Mario";
     public static final int		CLEAR_COLOR		= 0xff6B8BFE;
     public static final int		NUM_BUFFERS		= 3;
 
@@ -21,7 +21,7 @@ public class Game implements Runnable {
 
     public static final String LVL_TEXTURES_ATLAS_FILE_NAME = "lvl_textures.png";
     public static final String PLAYER_TEXTURES_ATLAS_FILE_NAME = "character_textures.png";
-    public static final String OBJECT_ATLAS_FILE_NAME = "object_texture.png";
+    public static final String OBJECT_ATLAS_FILE_NAME = "object_textures.png";
 
     private boolean				running;
     private Thread				gameThread;
@@ -35,16 +35,23 @@ public class Game implements Runnable {
 
     public Game() {
         running = false;
-        Display.create(WIDTH, HEIGHT, TITLE, CLEAR_COLOR, NUM_BUFFERS);
-        graphics = Display.getGraphics();
-        input = new Input();
-        Display.addInputListener(input);
 
         lvlAtlas = new TextureAtlas(LVL_TEXTURES_ATLAS_FILE_NAME);
         playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
         objectAtlas = new TextureAtlas(OBJECT_ATLAS_FILE_NAME);
         level = new Level(lvlAtlas, objectAtlas);
-        player = new Player(50, 0, 3, 3, 5, 10, playerAtlas);
+        player = new Player(50, 1200, 2.5f, 3, 1.5f , 5, 10, playerAtlas);
+
+        Display.create(width, height, TITLE, CLEAR_COLOR, NUM_BUFFERS);
+        graphics = Display.getGraphics();
+        input = new Input();
+        Display.addInputListener(input);
+    }
+
+
+    public static void setSize(Dimension d){
+        width = (int) d.getWidth();
+        height = (int) d.getHeight();
     }
 
     public synchronized void start() {

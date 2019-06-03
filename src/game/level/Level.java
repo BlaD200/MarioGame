@@ -13,8 +13,6 @@ public class Level {
     public static final int TILE_SCALE = 16;
     public static final int TILE_IN_GAME_SCALE = 1;
     public static final int SCALED_TILE_SIZE = TILE_SCALE * TILE_IN_GAME_SCALE;
-    public static final int TILE_IN_WIDth = Game.WIDTH / SCALED_TILE_SIZE;
-    public static final int TILE_IN_HEIGHT = Game.HEIGHT / SCALED_TILE_SIZE;
 
     private int[][] tileMap;
     private Map<TileType, Tile> tiles;
@@ -125,6 +123,8 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.FLAG));
 
         tileMap = Utils.levelParser("res\\levels\\Level1.lvl");
+
+        Game.setSize(new Dimension(Game.width, tileMap.length * 16 * TILE_IN_GAME_SCALE));
     }
 
 
