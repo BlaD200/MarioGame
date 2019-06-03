@@ -8,7 +8,7 @@ public class MyPanel extends JPanel {
 
     private BufferedImage backgroundImage;
 
-    MyPanel(BufferedImage backgroundImage) {
+    public MyPanel(BufferedImage backgroundImage) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.backgroundImage = resize(backgroundImage, screenSize.width, screenSize.height);
     }

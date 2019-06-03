@@ -1,6 +1,7 @@
 package levelEditor;
 
 import game.Game;
+import menu.Menu;
 import game.level.Level;
 import game.level.Tile;
 import game.level.TileType;
@@ -18,6 +19,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -45,8 +47,6 @@ public class LevelEditor extends JFrame {
     private int heightIndex;
 
     private int[][] tileMap;
-
-    private static int levelCounter = 4;
 
 
     private LevelEditor() {
@@ -81,9 +81,8 @@ public class LevelEditor extends JFrame {
             if (saveLevel(levelNameTextField.getText())) {
                 JOptionPane.showMessageDialog(this, "Level created successful.", "Level create",
                         JOptionPane.INFORMATION_MESSAGE);
-                levelCounter++;
-            }
-            else
+                Menu.getLevelNames().add(levelNameTextField.getText());
+            } else
                 JOptionPane.showMessageDialog(this,
                         "Level created failed (probably you name the level with already existing name)",
                         "Level create",
@@ -93,7 +92,7 @@ public class LevelEditor extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int option = JOptionPane.showConfirmDialog(null, "<html>Are you sure you want to exit? <br>" +
-                        " You won't be able to edit this level in future</html>", "Exit",
+                                " You won't be able to edit this level in future</html>", "Exit",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (option == 0) {
                     dispose();
@@ -264,11 +263,4 @@ public class LevelEditor extends JFrame {
             instance.toFront();
     }
 
-    public static void decreaseLevelCounter() {
-        levelCounter--;
-    }
-
-    public static int getLevelCounter() {
-        return levelCounter;
-    }
 }

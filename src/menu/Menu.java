@@ -1,6 +1,5 @@
 package menu;
 
-import game.Game;
 import levelEditor.LevelEditor;
 import utils.ResourceLoader;
 
@@ -14,6 +13,12 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Menu extends JFrame {
     private JPanel root;
@@ -24,6 +29,7 @@ public class Menu extends JFrame {
     private JLabel exitLabel;
     private JPanel backgroundPanel;
     private JLabel titleLabel;
+    private static ArrayList<String> levelNames = new ArrayList<>();
 
     public Menu() {
         setUp();
@@ -61,8 +67,7 @@ public class Menu extends JFrame {
         playBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Game mario = new Game();
-                mario.start();
+                Play.getInstance();
             }
         });
 
@@ -74,11 +79,21 @@ public class Menu extends JFrame {
     }
 
     private void setUp() {
+        try (Stream<Path> paths = Files.walk(Paths.get("res/levels"))) {
+            paths
+                    .filter(Files::isRegularFile)
+                    .map(Path::getFileName)
+                    .map(String::valueOf)
+                    .collect(Collectors.toCollection(() -> levelNames));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         exitLabel.setIcon(new ImageIcon("res/icons/ExitIcon.png"));
 
         Font fontMario = ResourceLoader.loadFont();
         Font fontForBtn = fontMario.deriveFont(Font.PLAIN, 60);
-        Font titleFont = fontMario.deriveFont(Font.PLAIN, 120);
+        Font titleFont = fontMario.deriveFont(Font.PLAIN, 90);
 
         playBtn.setFont(fontForBtn);
         settingsBtn.setFont(fontForBtn);
@@ -94,10 +109,19 @@ public class Menu extends JFrame {
     private void createUIComponents() {
         BufferedImage myImage = null;
         try {
-            myImage = ImageIO.read(new File("res/backgrounds/MenuBackground1.jpg"));
+            myImage = ImageIO.read(new File("res/backgrounds/MenuBackground.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         backgroundPanel = new MyPanel(myImage);
     }
+
+    public static void deleteLevel(String name) {
+        levelNames.remove(name);
+    }
+
+    public static ArrayList<String> getLevelNames() {
+        return levelNames;
+    }
+
 }

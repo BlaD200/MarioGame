@@ -13,7 +13,7 @@
           <gridbag weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
-          <opaque value="false"/>
+          <opaque value="true"/>
         </properties>
         <border type="none"/>
         <children>

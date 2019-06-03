@@ -30,10 +30,12 @@ public class Settings extends JFrame {
                 dispose();
                 instance = null;
             }
+
             @Override
             public void mouseEntered(MouseEvent e) {
                 backLabel.setIcon(new ImageIcon("res/icons/backIconOver.png"));
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
                 backLabel.setIcon(new ImageIcon("res/icons/backIcon.png"));
