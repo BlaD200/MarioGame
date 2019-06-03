@@ -1,9 +1,13 @@
 package display;
 
 import IO.Input;
+import game.Game;
+import menu.Menu;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -21,11 +25,17 @@ public class Display {
     private static int				clearColor;
 
     private static BufferStrategy	bufferStrategy;
+    private static Game game;
+    private static Menu menu;
 
-    public static void create(int width, int height, String title, int _clearColor, int numBuffers) {
+    public static void create(int width, int height, String title, int _clearColor, int numBuffers,
+                              Game game, Menu menu) {
 
         if (created)
             return;
+
+        Display.game = game;
+        Display.menu = menu;
 
         window = new JFrame(title);
 //        window.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -51,8 +61,23 @@ public class Display {
         content.createBufferStrategy(numBuffers);
         bufferStrategy = content.getBufferStrategy();
 
+        window.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    game.setPaused(true);
+                    menu.setVisible(true);
+                    menu.getResumeBtn().setEnabled(true);
+                }
+            }
+        });
+
         created = true;
 
+    }
+
+    public static void gameUnPause() {
+        game.setPaused(false);
     }
 
     public static void clear() {

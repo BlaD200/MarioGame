@@ -1,5 +1,6 @@
 package menu;
 
+import display.Display;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import levelEditor.LevelEditor;
@@ -75,7 +76,15 @@ public class Menu extends JFrame {
         playBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Play.getInstance();
+                Play.getInstance(Menu.this);
+            }
+        });
+        resumeBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Display.gameUnPause();
+                setVisible(false);
+                resumeBtn.setEnabled(false);
             }
         });
 
@@ -85,6 +94,10 @@ public class Menu extends JFrame {
         setUndecorated(true);
         setMusic();
         setVisible(true);
+    }
+
+    public JButton getResumeBtn() {
+        return resumeBtn;
     }
 
     private void setMusic() {

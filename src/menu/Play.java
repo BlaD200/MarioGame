@@ -20,6 +20,7 @@ public class Play extends JFrame {
     private JLabel backLabel;
     private JPanel mainPanel;
     private static Play instance;
+    private static Menu menu;
 
     public Play() {
         setUp();
@@ -92,8 +93,8 @@ public class Play extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 String level = label.getText();
-                Level.setLevel(level + ".lvl");
-                Game mario = new Game();
+                Level.setLevel(level);
+                Game mario = new Game(menu);
                 mario.start();
             }
 
@@ -111,7 +112,8 @@ public class Play extends JFrame {
         panel.add(label, gbcForLabels);
     }
 
-    static void getInstance() {
+    static void getInstance(Menu menu) {
+        Play.menu = menu;
         if (instance == null) {
             instance = new Play();
         } else {

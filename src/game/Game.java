@@ -4,6 +4,7 @@ import IO.Input;
 import display.Display;
 import game.level.Level;
 import graphics.TextureAtlas;
+import menu.Menu;
 import utils.Time;
 import java.awt.*;
 
@@ -32,8 +33,9 @@ public class Game implements Runnable {
     private TextureAtlas        objectAtlas;
     private Player				player;
     private Level               level;
+    private boolean paused = false;
 
-    public Game() {
+    public Game(Menu menu) {
         running = false;
 
         lvlAtlas = new TextureAtlas(LVL_TEXTURES_ATLAS_FILE_NAME);
@@ -42,7 +44,7 @@ public class Game implements Runnable {
         level = new Level(lvlAtlas, objectAtlas);
         player = new Player(50, 1200, 2.5f, 3, 1.5f , 5, 10, playerAtlas);
 
-        Display.create(width, height, TITLE, CLEAR_COLOR, NUM_BUFFERS);
+        Display.create(width, height, TITLE, CLEAR_COLOR, NUM_BUFFERS, this, menu);
         graphics = Display.getGraphics();
         input = new Input();
         Display.addInputListener(input);
@@ -83,73 +85,80 @@ public class Game implements Runnable {
     }
 
     private void update() {
-        level.update();
-        player.update(input);
+        if (!paused) {
+            level.update();
+            player.update(input);
+        }
     }
 
     private void render() {
-        Display.clear();
-        level.render(graphics);
-        player.render(graphics);
-        Display.swapBuffers();
+        if (!paused) {
+            Display.clear();
+            level.render(graphics);
+            player.render(graphics);
+            Display.swapBuffers();
+        }
     }
 
     public void run() {
+        if (!paused) {
+            int fps = 0;
+            int upd = 0;
+            int updl = 0;
 
-        int fps = 0;
-        int upd = 0;
-        int updl = 0;
+            long count = 0;
 
-        long count = 0;
+            float delta = 0;
 
-        float delta = 0;
+            long lastTime = Time.get();
+            while (running) {
+                long now = Time.get();
+                long elapsedTime = now - lastTime;
+                lastTime = now;
 
-        long lastTime = Time.get();
-        while (running) {
-            long now = Time.get();
-            long elapsedTime = now - lastTime;
-            lastTime = now;
+                count += elapsedTime;
 
-            count += elapsedTime;
+                boolean render = false;
+                delta += (elapsedTime / UPDATE_INTERVAL);
+                while (delta > 1) {
+                    update();
+                    upd++;
+                    delta--;
+                    if (render) {
+                        updl++;
+                    } else {
+                        render = true;
+                    }
+                }
 
-            boolean render = false;
-            delta += (elapsedTime / UPDATE_INTERVAL);
-            while (delta > 1) {
-                update();
-                upd++;
-                delta--;
                 if (render) {
-                    updl++;
+                    render();
+                    fps++;
                 } else {
-                    render = true;
+                    try {
+                        Thread.sleep(IDLE_TIME);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
 
-            if (render) {
-                render();
-                fps++;
-            } else {
-                try {
-                    Thread.sleep(IDLE_TIME);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                if (count >= Time.SECOND) {
+                    Display.setTitle(TITLE + " || Fps: " + fps + " | Upd: " + upd + " | Updl: " + updl);
+                    upd = 0;
+                    fps = 0;
+                    updl = 0;
+                    count = 0;
                 }
-            }
 
-            if (count >= Time.SECOND) {
-                Display.setTitle(TITLE + " || Fps: " + fps + " | Upd: " + upd + " | Updl: " + updl);
-                upd = 0;
-                fps = 0;
-                updl = 0;
-                count = 0;
             }
-
         }
-
     }
 
     private void cleanUp() {
         Display.destroy();
     }
 
+    public void setPaused(boolean b) {
+        paused = b;
+    }
 }
