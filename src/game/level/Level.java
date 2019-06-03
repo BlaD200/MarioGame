@@ -125,7 +125,7 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.FLAG));
 
 
-        tileMap = Utils.levelParser("res\\levels\\Level1.lvl");
+        tileMap = Utils.levelParser("res\\levels\\Level_1.lvl");
     }
 
 
