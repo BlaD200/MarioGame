@@ -12,12 +12,12 @@ public class SolidTile extends Tile {
     private Rectangle downR;
 
 
-    protected SolidTile(BufferedImage image, int scale, TileType type) {
+    public SolidTile(BufferedImage image, int scale, TileType type) {
         super(image, scale, type);
     }
 
 
-    protected void update(int x, int y, int w, int h) {
+    public void update(int x, int y, int w, int h) {
         upR = new Rectangle(x + borderThickness, y, w - borderThickness*2, borderThickness*2);
 
         leftR = new Rectangle(x - borderThickness, y + borderThickness, borderThickness * 2, h - borderThickness * 2);
@@ -41,17 +41,7 @@ public class SolidTile extends Tile {
         g.drawLine(x, y + height, x + width, y + height);
     }
 
-
-    void renderDebug(Graphics2D g) {
-        if (upR != null) {
-            g.draw(upR);
-            g.draw(rightR);
-            g.draw(leftR);
-            g.draw(downR);
-        }
-    }
-
-    Rectangle[] getCollisionRect(){
+    public Rectangle[] getCollisionRect(){
         return new Rectangle[]{upR, leftR, downR, rightR};
     }
 

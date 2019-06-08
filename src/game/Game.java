@@ -2,6 +2,7 @@ package game;
 
 import IO.Input;
 import display.Display;
+import game.entity.Player;
 import game.level.Level;
 import graphics.TextureAtlas;
 import menu.Menu;
@@ -40,6 +41,10 @@ public class Game implements Runnable {
         lvlAtlas = new TextureAtlas(LVL_TEXTURES_ATLAS_FILE_NAME);
         objectAtlas = new TextureAtlas(OBJECT_ATLAS_FILE_NAME);
         level = new Level(lvlAtlas, objectAtlas, input);
+
+        TextureAtlas playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
+        Player player = new Player(50, 400, 1.9f, 3, 1.5f, 5, 7, playerAtlas);
+        level.addEntity(player);
 
         Display.create(width, height, TITLE, CLEAR_COLOR, NUM_BUFFERS, this, menu);
         graphics = Display.getGraphics();

@@ -1,12 +1,21 @@
-package game;
+package game.entity;
 
 import IO.Input;
+import game.level.Level;
+import game.level.SolidTile;
+import game.level.TileType;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Map;
+
+import static game.level.Level.TILE_IN_GAME_SCALE;
+import static game.level.Level.TILE_SCALE;
 
 public abstract class Entity {
 
-    public final EntityType	type;
+    public final EntityType type;
 
     protected float			x;
     protected float			y;
@@ -33,7 +42,7 @@ public abstract class Entity {
         this.y = y;
     }
 
-    public abstract void update(Input input);
+    public abstract void update(Input input, Level level);
 
     public abstract void render(Graphics2D g);
 

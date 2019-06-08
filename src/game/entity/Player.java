@@ -1,8 +1,9 @@
-package game;
+package game.entity;
 
 import IO.Input;
-import graphics.AnimatedSprite;
+import game.Game;
 import game.level.Level;
+import graphics.AnimatedSprite;
 import graphics.Sprite;
 import graphics.TextureAtlas;
 import utils.Utils;
@@ -12,42 +13,32 @@ import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player extends Entity {
+public class Player extends Walker {
 
     public static final int SPRITE_SCALE = 16;
-    public static final int SPRITES_PER_HEADING = 1;
     public static final int ANIMATION_TIME = 10;
-    public static final int ROTATE_SPEED = 40;
+    public static final int ROTATE_SPEED = 30;
 
     private Animation animation;
     private Map<Animation, AnimatedSprite> spriteMap;
     private float scale;
-    private float speed;
     private float sprintSpeed;
-    private float gravity;
     private float jumpPower;
-    private int jumpCount;
 
     private int boostSpeed;
 
-    private boolean gravityEnabled;
-    private boolean rightClear = true;
-    private boolean leftClear = true;
-    private boolean upClear = true;
-
 
     public Player(float x, float y, float scale, float speed, float sprintSpeed, float gravity, float jumpPower, TextureAtlas atlas) {
-        super(EntityType.Player, x, y);
+        super(EntityType.Player, x, y, SPRITE_SCALE * scale, SPRITE_SCALE * scale, speed);
 
+        this.scale = scale;
         animation = Animation.FRONT_RIGHT;
         spriteMap = new HashMap<>();
-        this.scale = scale;
-        this.speed = speed;
+
         this.sprintSpeed = sprintSpeed;
         this.gravity = gravity;
         this.gravityEnabled = true;
         this.jumpPower = jumpPower;
-        //        this.jumpCount = jumpCount;
 
         AnimatedSprite animatedSprite = new AnimatedSprite(scale, 4, ANIMATION_TIME);
         for (int i = 2, j = 0; i >= 0; i--, j++) {
@@ -69,26 +60,27 @@ public class Player extends Entity {
         animatedSprite = new AnimatedSprite(new Sprite(Utils.mirrorEntity(atlas.cut(1, 34, 16, 16)), scale));
         spriteMap.put(Animation.FRONT_LEFT, animatedSprite);
 
-        animatedSprite = new AnimatedSprite(new Sprite(atlas.cut(16*4 + 5, 34, 16, 16), scale));
+        animatedSprite = new AnimatedSprite(new Sprite(atlas.cut(16 * 4 + 5, 34, 16, 16), scale));
         spriteMap.put(Animation.ROTATE_RIGHT, animatedSprite);
 
-        animatedSprite = new AnimatedSprite(new Sprite(Utils.mirrorEntity(atlas.cut(16*4 + 5, 34, 16, 16)), scale));
+        animatedSprite = new AnimatedSprite(new Sprite(Utils.mirrorEntity(atlas.cut(16 * 4 + 5, 34, 16, 16)), scale));
         spriteMap.put(Animation.ROTATE_LEFT, animatedSprite);
 
-        animatedSprite = new AnimatedSprite(new Sprite(atlas.cut(16*5 + 6, 34, 16, 16), scale));
+        animatedSprite = new AnimatedSprite(new Sprite(atlas.cut(16 * 5 + 6, 34, 16, 16), scale));
         spriteMap.put(Animation.JUMP_RIGHT, animatedSprite);
 
-        animatedSprite = new AnimatedSprite(new Sprite(Utils.mirrorEntity(atlas.cut(16*5 + 6, 34, 16, 16)), scale));
+        animatedSprite = new AnimatedSprite(new Sprite(Utils.mirrorEntity(atlas.cut(16 * 5 + 6, 34, 16, 16)), scale));
         spriteMap.put(Animation.JUMP_LEFT, animatedSprite);
 
-        animatedSprite = new AnimatedSprite(new Sprite(atlas.cut(16*6 + 7, 34, 16, 16), scale));
+        animatedSprite = new AnimatedSprite(new Sprite(atlas.cut(16 * 6 + 7, 34, 16, 16), scale));
         spriteMap.put(Animation.DEATH, animatedSprite);
 
     }
 
 
     @Override
-    public void update(Input input) {
+    public void update(Input input, Level level) {
+        super.update(input, level);
 
         float newX = x;
         float newY = y;
@@ -137,8 +129,6 @@ public class Player extends Entity {
                     newX += speed;
                 animation = Animation.ROTATE_RIGHT;
             }
-        } else if (input.getKey(KeyEvent.VK_UP) && upClear){
-            newY -= speed;
         } else if (input.getKey(KeyEvent.VK_DOWN) && gravityEnabled) {
             newY += speed;
         } else {
@@ -189,8 +179,7 @@ public class Player extends Entity {
                 newY -= jumpPower;
                 if (animation == Animation.FRONT_RIGHT || animation == Animation.EAST) {
                     animation = Animation.JUMP_RIGHT;
-                }
-                else if (animation == Animation.FRONT_LEFT || animation == Animation.WEST) {
+                } else if (animation == Animation.FRONT_LEFT || animation == Animation.WEST) {
                     animation = Animation.JUMP_LEFT;
                 }
             }
@@ -209,6 +198,7 @@ public class Player extends Entity {
         if (newX < 0) {
             newX = 0;
             spriteMap.get(animation).resetAnimation();
+            boostSpeed = 0;
             animation = Animation.FRONT_LEFT;
         }
 
@@ -222,17 +212,6 @@ public class Player extends Entity {
         y = newY;
     }
 
-    public float getWidth(){
-        return spriteMap.get(animation).getWidth();
-    }
-
-    public float getHeight(){
-        return spriteMap.get(animation).getHeight();
-    }
-
-    public void setGravityEnabled(boolean enabled){
-        this.gravityEnabled = enabled;
-    }
 
     @Override
     public void render(Graphics2D g) {
@@ -240,18 +219,13 @@ public class Player extends Entity {
     }
 
 
-    public void setRightClear(boolean rightClear) {
-        this.rightClear = rightClear;
+    public float getWidth() {
+        return spriteMap.get(animation).getWidth();
     }
 
 
-    public void setLeftClear(boolean leftClear) {
-        this.leftClear = leftClear;
-    }
-
-
-    public void setUpClear(boolean upClear) {
-        this.upClear = upClear;
+    public float getHeight() {
+        return spriteMap.get(animation).getHeight();
     }
 
 

@@ -2,12 +2,12 @@ package game.level;
 
 import IO.Input;
 import game.Game;
-import game.Player;
+import game.entity.Entity;
+import game.entity.Player;
 import graphics.TextureAtlas;
 import utils.Utils;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,13 +27,7 @@ public class Level {
     private Map<TileType, Tile> tiles;
     private Map<TileType, SolidTile> solidTiles;
     private Input input;
-    private Player player;
-
-    // temp
-    private Rectangle thisUpLeft;
-    private Rectangle thisDownRight;
-    private ArrayList<SolidTile> solidTilesPhysics = new ArrayList<>();
-    // temp end
+    private ArrayList<Entity> entities = new ArrayList<>();
 
 
     public Level(TextureAtlas levelAtlas, TextureAtlas object, Input input) {
@@ -47,9 +41,6 @@ public class Level {
         createSolidTilesMap();
 
         tileMap = Utils.levelParser("res\\levels\\" + level);
-
-        TextureAtlas playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
-        player = new Player(50, 400, 1.9f, 3, 1.5f, 5, 7, playerAtlas);
 
         Game.setSize(new Dimension(Game.width, tileMap.length * 16 * TILE_IN_GAME_SCALE));
     }
@@ -71,88 +62,9 @@ public class Level {
 
 
     public void update() {
-        player.update(input);
-
-        float x = player.getX() - offsetX;
-        float y = player.getY();
-
-        int tileX = ((int) (x / (TILE_SCALE * TILE_IN_GAME_SCALE)) * TILE_SCALE * TILE_IN_GAME_SCALE);
-        int tileY = (int) ((y) / (TILE_SCALE * TILE_IN_GAME_SCALE)) * TILE_SCALE * TILE_IN_GAME_SCALE;
-        int tileW = TILE_SCALE * TILE_IN_GAME_SCALE;
-        int tileH = TILE_SCALE * TILE_IN_GAME_SCALE;
-
-        physicsUpdate(tileX, tileY, tileW, tileH);
-    }
-
-
-    private void physicsUpdate(int tileX, int tileY, int tileW, int tileH) {
-        int scale = TILE_IN_GAME_SCALE * TILE_SCALE;
-        int x = tileX / scale;
-        int y = tileY / scale;
-
-        // TODO Auto-generated method stub
-        for (int i = x - 1; i <= x + 2; i++) {
-            for (int j = y - 1; j <= y + 2; j++) {
-                try {
-                    if (solidTiles.get(TileType.fromNumeric(tileMap[j][i])) != null) {
-                        SolidTile tile = new SolidTile(new BufferedImage(tileW, tileH, BufferedImage.TYPE_INT_ARGB),
-                                TILE_IN_GAME_SCALE, TileType.fromNumeric(tileMap[j][i]));
-                        tile.update((int) (i * scale + offsetX), j * scale, scale, scale);
-                        solidTilesPhysics.add(tile);
-                    }
-                } catch (IndexOutOfBoundsException ignored) {
-                }
-            }
+        for (Entity entity : entities) {
+            entity.update(input, this);
         }
-
-        x = (int) player.getX();
-        y = (int) player.getY();
-        int w = (int) player.getWidth();
-        int h = (int) player.getHeight();
-
-        thisUpLeft = new Rectangle(x, y, w, h);
-        thisDownRight = new Rectangle(x, y + 2, w, h);
-
-        boolean bottomClear = true;
-        boolean leftClear = true;
-        boolean upClear = true;
-        boolean rightClear = true;
-
-        for (SolidTile solidTilesPhysic : solidTilesPhysics) {
-            Rectangle[] rectangles = solidTilesPhysic.getCollisionRect();
-
-            if (thisDownRight.intersects(rectangles[0]) && bottomClear) {
-                bottomClear = false;
-                player.setGravityEnabled(false);
-                System.out.println("down");
-            }
-            if (thisUpLeft.intersects(rectangles[1]) && rightClear) {
-                rightClear = false;
-                player.setRightClear(false);
-                System.out.println("right");
-            }
-
-            if (thisUpLeft.intersects(rectangles[2]) && upClear) {
-                upClear = false;
-                player.setUpClear(false);
-                System.out.println("up");
-            }
-
-            if (thisUpLeft.intersects(rectangles[3]) && leftClear) {
-                leftClear = false;
-                player.setLeftClear(false);
-                System.out.println("left");
-            }
-        }
-
-        if (bottomClear)
-            player.setGravityEnabled(true);
-        if (rightClear)
-            player.setRightClear(true);
-        if (upClear)
-            player.setUpClear(true);
-        if (leftClear)
-            player.setLeftClear(true);
     }
 
 
@@ -177,30 +89,36 @@ public class Level {
                 int width = TILE_SCALE * TILE_IN_GAME_SCALE;
                 int height = TILE_SCALE * TILE_IN_GAME_SCALE;
 
-//                g.setColor(Color.BLACK);
-//                g.drawLine(x, y, x + width, y);
-//                g.drawLine(x, y, x, y + height);
-//                g.setColor(Color.YELLOW);
-//                g.drawString(j + ":" + i, x, y + 10);
-//
-//                g.setColor(Color.RED);
-//                g.draw(thisDownRight);
-//                g.draw(thisUpLeft);
-//                g.setColor(Color.WHITE);
+                //                g.setColor(Color.BLACK);
+                //                g.drawLine(x, y, x + width, y);
+                //                g.drawLine(x, y, x, y + height);
+                //                g.setColor(Color.YELLOW);
+                //                g.drawString(j + ":" + i, x, y + 10);
             }
         }
-        player.render(g);
 
-        for (int i = 0; i < solidTilesPhysics.size(); i++) {
-            SolidTile solidTilesPhysic = solidTilesPhysics.get(i);
-            solidTilesPhysic.renderDebug(g);
-            solidTilesPhysics.remove(solidTilesPhysic);
+        for (Entity entity : entities) {
+            entity.render(g);
         }
     }
 
 
     public Map<TileType, Tile> getTiles() {
         return tiles;
+    }
+
+
+    public Map<TileType, SolidTile> getSolidTiles() {
+        return solidTiles;
+    }
+
+
+    public int[][] getTileMap() {
+        return tileMap;
+    }
+
+    public void addEntity(Entity entity){
+        entities.add(entity);
     }
 
 
