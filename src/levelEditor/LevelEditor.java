@@ -1,8 +1,10 @@
 package levelEditor;
 
+import IO.Input;
 import game.Game;
 import menu.Menu;
 import game.level.Level;
+import game.level.SolidTile;
 import game.level.Tile;
 import game.level.TileType;
 import graphics.TextureAtlas;
@@ -122,7 +124,7 @@ public class LevelEditor extends JFrame {
 
     private void createUIComponents() {
         Level level = new Level(new TextureAtlas(Game.LVL_TEXTURES_ATLAS_FILE_NAME),
-                new TextureAtlas(Game.OBJECT_ATLAS_FILE_NAME));
+                new TextureAtlas(Game.OBJECT_ATLAS_FILE_NAME), new Input());
         tiles = level.getTiles();
 
         int iconIndent = 2;
@@ -138,6 +140,8 @@ public class LevelEditor extends JFrame {
             JButton button = new JButton();
             BufferedImage image = new BufferedImage(36, 36, BufferedImage.TYPE_INT_ARGB);
             Graphics2D graphics2D = (Graphics2D) image.getGraphics();
+            if (tiles.get(value) == null)
+                continue;
             graphics2D.drawImage(Utils.resize(tiles.get(value).getImage(), 32, 32), iconIndent, iconIndent, null);
             button.setIcon(new ImageIcon(image));
 

@@ -29,24 +29,20 @@ public class Game implements Runnable {
     private Graphics2D			graphics;
     private Input				input;
     private TextureAtlas        lvlAtlas;
-    private TextureAtlas        playerAtlas;
     private TextureAtlas        objectAtlas;
-    private Player				player;
     private Level               level;
     private boolean paused = false;
 
     public Game(Menu menu) {
         running = false;
 
+        input = new Input();
         lvlAtlas = new TextureAtlas(LVL_TEXTURES_ATLAS_FILE_NAME);
-        playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
         objectAtlas = new TextureAtlas(OBJECT_ATLAS_FILE_NAME);
-        level = new Level(lvlAtlas, objectAtlas);
-        player = new Player(50, 1200, 2.5f, 3, 1.5f , 5, 10, playerAtlas);
+        level = new Level(lvlAtlas, objectAtlas, input);
 
         Display.create(width, height, TITLE, CLEAR_COLOR, NUM_BUFFERS, this, menu);
         graphics = Display.getGraphics();
-        input = new Input();
         Display.addInputListener(input);
     }
 
@@ -85,19 +81,13 @@ public class Game implements Runnable {
     }
 
     private void update() {
-        if (!paused) {
-            level.update();
-            player.update(input);
-        }
+        level.update();
     }
 
     private void render() {
-        if (!paused) {
-            Display.clear();
-            level.render(graphics);
-            player.render(graphics);
-            Display.swapBuffers();
-        }
+        Display.clear();
+        level.render(graphics);
+        Display.swapBuffers();
     }
 
     public void run() {

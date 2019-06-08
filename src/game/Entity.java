@@ -17,6 +17,22 @@ public abstract class Entity {
         this.y = y;
     }
 
+    public float getX(){
+        return x;
+    }
+
+    public float getY(){
+        return y;
+    }
+
+    public void setX(float x){
+        this.x = x;
+    }
+
+    public void setY(float y){
+        this.y = y;
+    }
+
     public abstract void update(Input input);
 
     public abstract void render(Graphics2D g);

@@ -28,4 +28,12 @@ public class Sprite {
     public float getScale() {
         return scale;
     }
+
+    public float getWidth(){
+        return image.getWidth();
+    }
+
+    public float getHeight(){
+        return image.getHeight();
+    }
 }

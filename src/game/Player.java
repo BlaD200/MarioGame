@@ -30,6 +30,11 @@ public class Player extends Entity {
 
     private int boostSpeed;
 
+    private boolean gravityEnabled;
+    private boolean rightClear = true;
+    private boolean leftClear = true;
+    private boolean upClear = true;
+
 
     public Player(float x, float y, float scale, float speed, float sprintSpeed, float gravity, float jumpPower, TextureAtlas atlas) {
         super(EntityType.Player, x, y);
@@ -40,6 +45,7 @@ public class Player extends Entity {
         this.speed = speed;
         this.sprintSpeed = sprintSpeed;
         this.gravity = gravity;
+        this.gravityEnabled = true;
         this.jumpPower = jumpPower;
         //        this.jumpCount = jumpCount;
 
@@ -94,8 +100,7 @@ public class Player extends Entity {
         if (input.getKey(KeyEvent.VK_X))
             speed += sprintSpeed;
 
-
-        if (input.getKey(KeyEvent.VK_RIGHT)) {
+        if (input.getKey(KeyEvent.VK_RIGHT) && rightClear) {
             if (boostSpeed >= 0) {
                 boostSpeed = (boostSpeed >= ROTATE_SPEED) ? boostSpeed : ++boostSpeed;
                 newX += speed;
@@ -106,14 +111,18 @@ public class Player extends Entity {
                 }
             } else {
                 boostSpeed++;
-                newX -= speed;
+                if (leftClear)
+                    newX -= speed;
                 animation = Animation.ROTATE_LEFT;
             }
             if (newX >= Game.width / 2.5) {
                 newXOffset -= speed;
-                newX -= speed;
+                if (leftClear)
+                    newX -= speed;
+                else
+                    spriteMap.get(animation).resetAnimation();
             }
-        } else if (input.getKey(KeyEvent.VK_LEFT)) {
+        } else if (input.getKey(KeyEvent.VK_LEFT) && leftClear) {
             if (boostSpeed <= 0) {
                 boostSpeed = (boostSpeed >= -ROTATE_SPEED) ? --boostSpeed : boostSpeed;
                 newX -= speed;
@@ -124,41 +133,58 @@ public class Player extends Entity {
                 }
             } else {
                 boostSpeed--;
-                newX += speed;
+                if (rightClear)
+                    newX += speed;
                 animation = Animation.ROTATE_RIGHT;
             }
+        } else if (input.getKey(KeyEvent.VK_UP) && upClear){
+            newY -= speed;
+        } else if (input.getKey(KeyEvent.VK_DOWN) && gravityEnabled) {
+            newY += speed;
         } else {
             if (animation == Animation.EAST) {
                 if (boostSpeed == 0)
                     animation = Animation.FRONT_RIGHT;
                 else {
                     boostSpeed--;
-                    newX += speed;
+                    if (rightClear)
+                        newX += speed;
+                    else
+                        spriteMap.get(animation).resetAnimation();
                 }
             } else if (animation == Animation.WEST) {
                 if (boostSpeed == 0)
                     animation = Animation.FRONT_LEFT;
                 else {
                     boostSpeed++;
-                    newX -= speed;
+                    if (leftClear)
+                        newX -= speed;
+                    else
+                        spriteMap.get(animation).resetAnimation();
                 }
-            } else if (animation == Animation.ROTATE_RIGHT){
-                if (boostSpeed == 0){
+            } else if (animation == Animation.ROTATE_RIGHT) {
+                if (boostSpeed == 0) {
                     animation = Animation.FRONT_LEFT;
                 } else {
                     boostSpeed--;
-                    newX += speed;
+                    if (rightClear)
+                        newX += speed;
+                    else
+                        spriteMap.get(animation).resetAnimation();
                 }
             } else if (animation == Animation.ROTATE_LEFT) {
                 if (boostSpeed == 0) {
                     animation = Animation.FRONT_RIGHT;
                 } else {
                     boostSpeed++;
-                    newX -= speed;
+                    if (leftClear)
+                        newX -= speed;
+                    else
+                        spriteMap.get(animation).resetAnimation();
                 }
             }
         }
-        if (input.getKey(KeyEvent.VK_SPACE)) {
+        if (input.getKey(KeyEvent.VK_SPACE) && upClear) {
             if (newY <= Game.height - SPRITE_SCALE * scale) {
                 newY -= jumpPower;
                 if (animation == Animation.FRONT_RIGHT || animation == Animation.EAST) {
@@ -170,7 +196,8 @@ public class Player extends Entity {
             }
         }
 
-        newY += gravity;
+        if (gravityEnabled)
+            newY += gravity;
 
         if (newY == y) {
             if (animation == Animation.JUMP_RIGHT)
@@ -181,12 +208,13 @@ public class Player extends Entity {
 
         if (newX < 0) {
             newX = 0;
+            spriteMap.get(animation).resetAnimation();
             animation = Animation.FRONT_LEFT;
         }
 
 
         if (newY >= Game.height - SPRITE_SCALE * scale) {
-            newY = Game.height - SPRITE_SCALE * scale;
+            newY = Game.height - SPRITE_SCALE * scale - 1;
         }
 
         Level.setOffsetX(newXOffset);
@@ -194,10 +222,36 @@ public class Player extends Entity {
         y = newY;
     }
 
+    public float getWidth(){
+        return spriteMap.get(animation).getWidth();
+    }
+
+    public float getHeight(){
+        return spriteMap.get(animation).getHeight();
+    }
+
+    public void setGravityEnabled(boolean enabled){
+        this.gravityEnabled = enabled;
+    }
 
     @Override
     public void render(Graphics2D g) {
         spriteMap.get(animation).render(g, x, y);
+    }
+
+
+    public void setRightClear(boolean rightClear) {
+        this.rightClear = rightClear;
+    }
+
+
+    public void setLeftClear(boolean leftClear) {
+        this.leftClear = leftClear;
+    }
+
+
+    public void setUpClear(boolean upClear) {
+        this.upClear = upClear;
     }
 
 

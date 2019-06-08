@@ -92,8 +92,8 @@ public class Menu extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
-        setMusic();
-        setVisible(true);
+//        setMusic();
+//        setVisible(true);
     }
 
     public JButton getResumeBtn() {

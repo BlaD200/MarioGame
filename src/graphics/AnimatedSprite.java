@@ -122,6 +122,14 @@ public class AnimatedSprite {
     }
 
 
+    public float getWidth(){
+        return sprite.getWidth();
+    }
+
+    public float getHeight(){
+        return sprite.getHeight();
+    }
+
     private void getNextImage() {
         sprite = sprites[spriteNumber++ % spriteCount];
     }

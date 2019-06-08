@@ -1,13 +1,14 @@
 package main;
 
 import game.Game;
+import menu.Menu;
 
 public class Main {
 
     public static void main(String[] args) {
 
-//        Game tanks = new Game();
-//        tanks.start();
+        Game mario = new Game(new Menu());
+        mario.start();
 
     }
 }
