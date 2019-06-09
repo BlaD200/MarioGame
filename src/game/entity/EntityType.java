@@ -2,6 +2,6 @@ package game.entity;
 
 public enum EntityType {
 
-    Player;
-
+    Player,
+    Enemy;
 }

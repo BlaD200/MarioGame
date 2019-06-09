@@ -2,8 +2,12 @@ package game;
 
 import IO.Input;
 import display.Display;
+import game.entity.Enemy;
+import game.entity.EntityType;
 import game.entity.Player;
+import game.entity.Walker;
 import game.level.Level;
+import graphics.Sprite;
 import graphics.TextureAtlas;
 import menu.Menu;
 import utils.Time;
@@ -25,7 +29,7 @@ public class Game implements Runnable {
     public static final String PLAYER_TEXTURES_ATLAS_FILE_NAME = "character_textures.png";
     public static final String OBJECT_ATLAS_FILE_NAME = "object_textures.png";
 
-    public static final boolean IS_DEBUG = true;
+    public static final boolean IS_DEBUG = false;
 
     private boolean				running;
     private Thread				gameThread;
@@ -47,6 +51,10 @@ public class Game implements Runnable {
         TextureAtlas playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
         Player player = new Player(50, 400, 1.9f, 3, 1.5f, 5, 18, playerAtlas);
         level.addEntity(player);
+
+        Sprite enemySprite = new Sprite(playerAtlas.cut(1, 34, 16, 16), 2);
+        Enemy enemy = new Enemy(EntityType.Enemy, enemySprite, 1300,400, 400,32, 32);
+        level.addEntity(enemy);
 
         Display.create(width, height, TITLE, CLEAR_COLOR, NUM_BUFFERS, this, menu);
         graphics = Display.getGraphics();
