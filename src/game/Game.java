@@ -25,6 +25,8 @@ public class Game implements Runnable {
     public static final String PLAYER_TEXTURES_ATLAS_FILE_NAME = "character_textures.png";
     public static final String OBJECT_ATLAS_FILE_NAME = "object_textures.png";
 
+    public static final boolean IS_DEBUG = true;
+
     private boolean				running;
     private Thread				gameThread;
     private Graphics2D			graphics;

@@ -3,7 +3,6 @@ package game.level;
 import IO.Input;
 import game.Game;
 import game.entity.Entity;
-import game.entity.Player;
 import graphics.TextureAtlas;
 import utils.Utils;
 
@@ -11,8 +10,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import static game.Game.PLAYER_TEXTURES_ATLAS_FILE_NAME;
 
 public class Level {
 
@@ -71,14 +68,18 @@ public class Level {
     public void render(Graphics2D g) {
         for (int i = 0; i < tileMap.length; i++) {
             for (int j = 0; j < tileMap[i].length; j++) {
+                if (j * TILE_SCALE * TILE_IN_GAME_SCALE < offsetX)
+                    continue;
+                if (j * TILE_SCALE * TILE_IN_GAME_SCALE + offsetX > Game.width)
+                    break;
                 if (solidTiles.get(TileType.fromNumeric(tileMap[i][j])) != null) {
                     solidTiles.get(TileType.fromNumeric(tileMap[i][j])).render(g, (int) (j * SCALED_TILE_SIZE + offsetX),
                             i * SCALED_TILE_SIZE);
                 }
-                if (tiles.get(TileType.fromNumeric(tileMap[i][j])) == null) {
+                if (tiles.get(TileType.fromNumeric(tileMap[i][j])) == null && !Game.IS_DEBUG) {
                     continue;
                 }
-                if (TileType.fromNumeric(tileMap[i][j]) == TileType.Empty) {
+                if (TileType.fromNumeric(tileMap[i][j]) == TileType.Empty && !Game.IS_DEBUG) {
                     continue;
                 }
                 if (tiles.get(TileType.fromNumeric(tileMap[i][j])) != null) {
@@ -89,11 +90,13 @@ public class Level {
                 int width = TILE_SCALE * TILE_IN_GAME_SCALE;
                 int height = TILE_SCALE * TILE_IN_GAME_SCALE;
 
-                //                g.setColor(Color.BLACK);
-                //                g.drawLine(x, y, x + width, y);
-                //                g.drawLine(x, y, x, y + height);
-                //                g.setColor(Color.YELLOW);
-                //                g.drawString(j + ":" + i, x, y + 10);
+                if (Game.IS_DEBUG) {
+                    g.setColor(Color.BLACK);
+                    g.drawLine(x, y, x + width, y);
+                    g.drawLine(x, y, x, y + height);
+                    g.setColor(Color.YELLOW);
+                    g.drawString(j + ":" + i, x, y + 10);
+                }
             }
         }
 
@@ -117,7 +120,8 @@ public class Level {
         return tileMap;
     }
 
-    public void addEntity(Entity entity){
+
+    public void addEntity(Entity entity) {
         entities.add(entity);
     }
 

@@ -1,6 +1,7 @@
 package game.entity;
 
 import IO.Input;
+import game.Game;
 import game.level.Level;
 import game.level.SolidTile;
 import game.level.TileType;
@@ -24,6 +25,10 @@ public abstract class Walker extends Entity {
     protected boolean rightClear = true;
     protected boolean leftClear = true;
     protected boolean upClear = true;
+
+    ArrayList<SolidTile> solidTilesPhysics = new ArrayList<>();
+    Rectangle thisUpLeft;
+    Rectangle thisDownRight;
 
 
     protected Walker(EntityType type, float x, float y, float w, float h, float speed) {
@@ -71,8 +76,8 @@ public abstract class Walker extends Entity {
 
 
     private void physicsUpdate(Level level) {
+        solidTilesPhysics.clear();
         Map<TileType, SolidTile> solidTiles = level.getSolidTiles();
-        ArrayList<SolidTile> solidTilesPhysics = new ArrayList<>();
         int[][] tileMap = level.getTileMap();
 
         float offsetX = Level.getOffsetX();
@@ -107,8 +112,8 @@ public abstract class Walker extends Entity {
         int w = (int) getWidth();
         int h = (int) getHeight();
 
-        Rectangle thisUpLeft = new Rectangle(xIndex, yIndex, w, h);
-        Rectangle thisDownRight = new Rectangle(xIndex, yIndex + 2, w, h);
+         thisUpLeft = new Rectangle(xIndex, yIndex, w, h);
+         thisDownRight = new Rectangle(xIndex, yIndex + 2, w, h);
 
         boolean bottomClear = true;
         boolean leftClear = true;
@@ -138,6 +143,8 @@ public abstract class Walker extends Entity {
             }
         }
 
+//        solidTilesPhysics.clear();
+
         if (bottomClear)
             setGravityEnabled(true);
         if (rightClear)
@@ -146,5 +153,21 @@ public abstract class Walker extends Entity {
             setUpClear(true);
         if (leftClear)
             setLeftClear(true);
+    }
+
+
+    @Override
+    public void render(Graphics2D g) {
+        if (Game.IS_DEBUG) {
+            for (SolidTile solidTilesPhysic : solidTilesPhysics) {
+                solidTilesPhysic.renderDebug(g);
+            }
+            if (thisDownRight != null) {
+                g.setColor(Color.RED);
+                g.draw(thisDownRight);
+                g.draw(thisUpLeft);
+                g.setColor(Color.WHITE);
+            }
+        }
     }
 }

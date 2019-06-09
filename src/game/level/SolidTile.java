@@ -33,12 +33,16 @@ public class SolidTile extends Tile {
     @Override
     protected void render(Graphics2D g, int x, int y) {
         super.render(g, x, y);
-        int width = super.getImage().getWidth();
-        int height = super.getImage().getHeight();
-        g.drawLine(x, y, x + width, y);
-        g.drawLine(x, y, x, y + height);
-        g.drawLine(x + width, y, x + width, y + height);
-        g.drawLine(x, y + height, x + width, y + height);
+    }
+
+    public void renderDebug(Graphics2D g){
+        if (upR != null){
+            g.setColor(Color.WHITE);
+            g.draw(upR);
+            g.draw(leftR);
+            g.draw(rightR);
+            g.draw(downR);
+        }
     }
 
     public Rectangle[] getCollisionRect(){

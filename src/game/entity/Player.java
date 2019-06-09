@@ -222,6 +222,7 @@ public class Player extends Walker {
 
     @Override
     public void render(Graphics2D g) {
+        super.render(g);
         spriteMap.get(animation).render(g, x, y);
     }
 
