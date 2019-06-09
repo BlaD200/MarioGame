@@ -24,7 +24,7 @@ public class Player extends Walker {
     private float scale;
     private float sprintSpeed;
     private float jumpPower;
-
+    private float jumpSpeed;
     private int boostSpeed;
 
 
@@ -174,15 +174,22 @@ public class Player extends Walker {
                 }
             }
         }
-        if (input.getKey(KeyEvent.VK_SPACE) && upClear) {
-            if (newY <= Game.height - SPRITE_SCALE * scale) {
-                newY -= jumpPower;
+        if (input.getKey(KeyEvent.VK_SPACE) && upClear && !gravityEnabled) {
+            if (jumpSpeed <= 0) {
+                jumpSpeed = jumpPower;
                 if (animation == Animation.FRONT_RIGHT || animation == Animation.EAST) {
                     animation = Animation.JUMP_RIGHT;
                 } else if (animation == Animation.FRONT_LEFT || animation == Animation.WEST) {
                     animation = Animation.JUMP_LEFT;
                 }
             }
+        }
+
+        if (jumpSpeed > 0 && upClear) {
+            newY -= jumpSpeed;
+            jumpSpeed -= jumpPower / 40;
+        } else {
+            jumpSpeed = 0;
         }
 
         if (gravityEnabled)

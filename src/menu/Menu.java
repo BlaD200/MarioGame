@@ -93,7 +93,7 @@ public class Menu extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
 //        setMusic();
-//        setVisible(true);
+        setVisible(true);
     }
 
     public JButton getResumeBtn() {
