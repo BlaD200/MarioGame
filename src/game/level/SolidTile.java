@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class SolidTile extends Tile {
     static final int borderThickness = 4;
+    private TileType type;
 
     Rectangle upR;
     Rectangle rightR;
@@ -14,8 +15,13 @@ public class SolidTile extends Tile {
 
     public SolidTile(BufferedImage image, int scale, TileType type) {
         super(image, scale, type);
+        this.type = type;
     }
 
+    @Override
+    public TileType getType() {
+        return type;
+    }
 
     public void update(int x, int y, int w, int h) {
         upR = new Rectangle(x + borderThickness, y, w - borderThickness*2, borderThickness*2);

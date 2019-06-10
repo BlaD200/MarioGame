@@ -1,6 +1,7 @@
 package game.entity;
 
 import IO.Input;
+import display.Display;
 import game.Game;
 import game.level.Level;
 import game.level.SolidTile;
@@ -128,19 +129,28 @@ public abstract class Walker extends Entity {
                 setGravityEnabled(false);
             }
             if (thisUpLeft.intersects(rectangles[1]) && rightClear) {
+                if (solidTilesPhysic.getType() == TileType.BAR || solidTilesPhysic.getType() == TileType.PIPE_LEFT_DOWN) {
+                    Display.victory();
+                    Game.sleep(3000);
+                    Display.dispose();
+                    Display.gameStop();
+
+                }
                 rightClear = false;
                 setRightClear(false);
             }
-
             if (thisUpLeft.intersects(rectangles[2]) && upClear) {
+                if (solidTilesPhysic.getType() == TileType.COIN_BLOCK) {
+                    System.out.println("Coin");
+                }
                 upClear = false;
                 setUpClear(false);
             }
-
             if (thisUpLeft.intersects(rectangles[3]) && leftClear) {
                 leftClear = false;
                 setLeftClear(false);
             }
+
         }
 
         if (bottomClear)

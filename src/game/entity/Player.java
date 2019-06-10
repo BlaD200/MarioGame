@@ -126,13 +126,6 @@ public class Player extends Walker {
                     newX -= speed;
                 animation = Animation.ROTATE_LEFT;
             }
-            if (newX >= Game.width / 2.5) {
-                newXOffset -= speed;
-                if (leftClear)
-                    newX -= speed;
-                else
-                    spriteMap.get(animation).resetAnimation();
-            }
         } else if (input.getKey(KeyEvent.VK_LEFT) && leftClear) {
             if (boostSpeed <= 0) {
                 boostSpeed = (boostSpeed >= -ROTATE_SPEED) ? --boostSpeed : boostSpeed;
@@ -253,6 +246,14 @@ public class Player extends Walker {
 
         }
 
+        if (newX >= Game.width / 2.5 && x < newX) {
+            newXOffset -= speed;
+            if (leftClear)
+                newX -= speed;
+            else
+                spriteMap.get(animation).resetAnimation();
+        }
+
         Level.setOffsetX(newXOffset);
         x = newX;
         y = newY;
@@ -306,5 +307,4 @@ public class Player extends Walker {
             start = true;
         }
     }
-
 }

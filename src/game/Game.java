@@ -52,7 +52,7 @@ public class Game implements Runnable {
         level = new Level(lvlAtlas, objectAtlas, input);
 
         TextureAtlas playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
-        Player player = new Player(50, 400, 1.9f, 3, 1.5f, 5, 18,
+        Player player = new Player(50, 300, 1.9f, 3, 1.5f, 5, 18,
                 playerAtlas, menu, Game.this, lives, level);
         level.addEntity(player);
 

@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -50,7 +52,7 @@ public class Display {
 
         window = new JFrame(title);
 //        window.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        window.setUndecorated(true);
+//        window.setUndecorated(true);
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         content = new Canvas();
 
@@ -83,7 +85,15 @@ public class Display {
             }
         });
 
-        created = true;
+        window.addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                e.getWindow().dispose();
+                game.stop();
+            }
+        });
 
     }
 
@@ -137,6 +147,10 @@ public class Display {
 
     public static void dispose() {
         window.dispose();
+    }
+
+    public static void gameStop() {
+        game.stop();
     }
 
     public static void victory() {

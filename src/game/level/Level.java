@@ -175,6 +175,9 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_CENTER));
         solidTiles.put(TileType.PLATFORM_GRASS_RIGHT, new SolidTile(levelAtlas.cut(7 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_RIGHT));
+
+        solidTiles.put(TileType.BAR, new SolidTile(levelAtlas.cut(16 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.BAR));
     }
 
 
@@ -229,8 +232,6 @@ public class Level {
         tiles.put(TileType.CASTLE_OVAL_HOLE, new Tile(levelAtlas.cut(21 * TILE_SCALE, 1 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.CASTLE_OVAL_HOLE));
 
-        tiles.put(TileType.BAR, new Tile(levelAtlas.cut(16 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.BAR));
         tiles.put(TileType.BAR_TOP, new Tile(levelAtlas.cut(16 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.BAR_TOP));
         tiles.put(TileType.FLAG, new Tile(object.cut(8 * TILE_SCALE, 2 * TILE_SCALE, TILE_SCALE,
