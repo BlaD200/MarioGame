@@ -141,7 +141,9 @@ public abstract class Walker extends Entity {
             }
             if (thisUpLeft.intersects(rectangles[2]) && upClear) {
                 if (solidTilesPhysic.getType() == TileType.COIN_BLOCK) {
-                    System.out.println("Coin");
+                    int xTileToChange = (int) (solidTilesPhysic.getCollisionRect()[3].x - offsetX) / 32;
+                    int yTileToChange = solidTilesPhysic.getCollisionRect()[3].y / 32;
+                    tileMap[yTileToChange][xTileToChange] = 1;
                 }
                 upClear = false;
                 setUpClear(false);

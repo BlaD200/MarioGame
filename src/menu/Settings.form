@@ -57,7 +57,11 @@
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
               <gridbag top="0" left="0" bottom="0" right="100" weightx="0.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <focusable value="false"/>
+              <requestFocusEnabled value="false"/>
+              <verifyInputWhenFocusTarget value="false"/>
+            </properties>
           </component>
           <component id="aa2eb" class="javax.swing.JLabel" binding="backLabel">
             <constraints>

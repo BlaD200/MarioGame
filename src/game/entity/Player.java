@@ -10,8 +10,12 @@ import graphics.TextureAtlas;
 import menu.Menu;
 import utils.Utils;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +42,8 @@ public class Player extends Walker {
     private Rectangle enemyRect;
     private Rectangle playerRect;
     private Rectangle playerBottomRect;
+    private static AudioInputStream audioInputStream;
+    private static Clip clip;
 
 
     public Player(float x, float y, float scale, float speed, float sprintSpeed, float gravity, float jumpPower,
@@ -188,6 +194,16 @@ public class Player extends Walker {
         }
         if (input.getKey(KeyEvent.VK_SPACE) && upClear && !gravityEnabled) {
             if (jumpSpeed <= 0) {
+                try {
+                    audioInputStream = AudioSystem.getAudioInputStream(
+                            new File("res/sound/player/jump.wav").getAbsoluteFile());
+                    clip = AudioSystem.getClip();
+                    clip.open(audioInputStream);
+                } catch(Exception ex) {
+                    System.out.println("Error with playing sound.");
+                    ex.printStackTrace();
+                }
+                clip.start();
                 jumpSpeed = jumpPower;
                 if (animation == Animation.FRONT_RIGHT || animation == Animation.EAST) {
                     animation = Animation.JUMP_RIGHT;
@@ -296,9 +312,13 @@ public class Player extends Walker {
             lives--;
             if (lives == 0) {
                 Display.gameOver();
-                Game.sleep(3000);
+                Menu.setClip("res/sound/gameOver.wav");
+                Game.sleep(3300);
                 Display.dispose();
+                Menu.setClip("res/sound/environment/overWorld.wav");
             } else {
+                Menu.setClip("res/sound/marioDies.wav");
+                Game.sleep(2300);
                 Display.dispose();
                 Game mario = new Game(menu, lives);
                 mario.start();

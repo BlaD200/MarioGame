@@ -62,6 +62,7 @@ public class Game implements Runnable {
         String levelNum = Level.getLevel();
         switch (levelNum) {
             case "Level_1.lvl":
+                Menu.setClip("res/sound/environment/overWorld.wav");
                 Enemy enemy0 = new Enemy(EntityType.Enemy, enemySprite, 600,Game.height - 100, 32,32, 2, 5);
                 level.addEntity(enemy0);
                 Enemy enemy1 = new Enemy(EntityType.Enemy, enemySprite, 900,Game.height - 100, 32,32, 2, 5);
@@ -82,6 +83,7 @@ public class Game implements Runnable {
                 level.addEntity(enemy8);
                 break;
             case "Level_2.lvl":
+                Menu.setClip("res/sound/environment/underground.wav");
                 Enemy lvl2Enemy0 = new Enemy(EntityType.Enemy, enemySprite, 600,Game.height - 100, 32,32, 3, 5);
                 level.addEntity(lvl2Enemy0);
                 Enemy lvl2Enemy1 = new Enemy(EntityType.Enemy, enemySprite, 1000,Game.height - 100, 32,32, 3, 5);
@@ -100,6 +102,7 @@ public class Game implements Runnable {
                 level.addEntity(lvl2Enemy8);
                 break;
             case "Level_3.lvl":
+                Menu.setClip("res/sound/environment/castle.wav");
                 Enemy lvl3Enemy0 = new Enemy(EntityType.Enemy, enemySprite, 600,Game.height - 100, 32,32, 1, 5);
                 level.addEntity(lvl3Enemy0);
                 Enemy lvl3Enemy1 = new Enemy(EntityType.Enemy, enemySprite, 1000,Game.height - 100, 32,32, 1, 5);
@@ -118,6 +121,7 @@ public class Game implements Runnable {
                 level.addEntity(lvl3Enemy8);
                 break;
             case "Level_4.lvl":
+                Menu.setClip("res/sound/environment/ending.wav");
                 Enemy lvl4Enemy0 = new Enemy(EntityType.Enemy, enemySprite, 300,Game.height - 100, 32,32, 3, 5);
                 level.addEntity(lvl4Enemy0);
                 Enemy lvl4Enemy1 = new Enemy(EntityType.Enemy, enemySprite, 1150,Game.height - 100, 32,32, 1, 5);

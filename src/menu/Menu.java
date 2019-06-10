@@ -7,9 +7,7 @@ import levelEditor.LevelEditor;
 import utils.ResourceLoader;
 
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,6 +38,9 @@ public class Menu extends JFrame {
     private JLabel titleLabel;
     private static ArrayList<String> levelNames = new ArrayList<>();
     private static String difficulty = "Normal";
+    private static int volume = 100;
+    private static AudioInputStream audioInputStream;
+    private static Clip clip;
 
     public Menu() {
         setUp();
@@ -65,7 +66,7 @@ public class Menu extends JFrame {
         settingsBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Settings.getInstance();
+                Settings.getInstance(difficulty, volume);
             }
         });
         createLvlBtn.addActionListener(new ActionListener() {
@@ -93,7 +94,7 @@ public class Menu extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
-//        setMusic();
+        setMusic();
         setVisible(true);
     }
 
@@ -104,11 +105,10 @@ public class Menu extends JFrame {
     private void setMusic() {
         String songName = "overWorld.wav";
         String pathToMp3 = "res/sound/environment/" + songName;
-
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+            audioInputStream = AudioSystem.getAudioInputStream(
                     new File(pathToMp3).getAbsoluteFile());
-            Clip clip = AudioSystem.getClip();
+            clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
         } catch(Exception ex) {
@@ -169,5 +169,38 @@ public class Menu extends JFrame {
 
     public static String getDifficulty() {
         return difficulty;
+    }
+
+    public static AudioInputStream getAudioInputStream() {
+        return audioInputStream;
+    }
+
+    public static void setAudioInputStream(AudioInputStream audioInputStream) {
+        Menu.audioInputStream = audioInputStream;
+    }
+
+    public static float getVolume() {
+        return volume;
+    }
+
+    public static void setVolume(int volume) {
+        Menu.volume = volume;
+    }
+
+    public static Clip getClip() {
+        return clip;
+    }
+
+    public static void setClip(String pathToMp3) {
+        clip.stop();
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File(pathToMp3).getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+        clip.start();
     }
 }

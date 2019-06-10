@@ -3,7 +3,13 @@ package menu;
 import utils.ResourceLoader;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,10 +28,15 @@ public class Settings extends JFrame {
     private JLabel backLabel;
     private JPanel backgroundPanel;
     private static Settings instance;
+    private FloatControl gainControl = (FloatControl) Menu.getClip().getControl(FloatControl.Type.MASTER_GAIN);
 
 
-    private Settings() {
+    private Settings(String difficulty, int volume) {
         setUp();
+        gainControl.setValue(gainControl.getMaximum());
+        System.out.println(gainControl.getMinimum());
+        System.out.println(gainControl.getMaximum());
+        difficultyComboBox.setSelectedItem(difficulty);
         backLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -49,7 +60,24 @@ public class Settings extends JFrame {
                 Menu.setDifficulty((String) difficultyComboBox.getSelectedItem());
             }
         });
-        soundSpinner.setModel(new SpinnerNumberModel(50, 0, 100, 1));
+        soundSpinner.setModel(new SpinnerNumberModel(volume, 0, 100, 1));
+        Component[] comps = soundSpinner.getEditor().getComponents();
+        for (Component component : comps) {
+            component.setFocusable(false);
+        }
+        soundSpinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                float previousVolume = Menu.getVolume();
+                int newVolume = (int) soundSpinner.getValue();
+                if (newVolume > previousVolume)
+                    gainControl.setValue(gainControl.getValue() + 0.6f);
+                else
+                    gainControl.setValue(gainControl.getValue() - 0.6f);
+                System.out.println(gainControl.getValue());
+                Menu.setVolume(newVolume);
+            }
+        });
         add(root);
 //        setPreferredSize(screenSize);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,9 +99,9 @@ public class Settings extends JFrame {
         difficultyComboBox.setFont(fontForOther);
     }
 
-    static void getInstance() {
+    static void getInstance(String difficulty, int volume) {
         if (instance == null) {
-            instance = new Settings();
+            instance = new Settings(difficulty, volume);
         } else
             instance.toFront();
     }

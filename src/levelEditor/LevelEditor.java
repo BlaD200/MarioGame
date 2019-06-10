@@ -42,6 +42,7 @@ public class LevelEditor extends JFrame {
     private int levelHeight;
 
     private Map<TileType, Tile> tiles;
+    private Map<TileType, SolidTile> solidTiles;
 
     private TileType selectedTile;
 
@@ -126,6 +127,7 @@ public class LevelEditor extends JFrame {
         Level level = new Level(new TextureAtlas(Game.LVL_TEXTURES_ATLAS_FILE_NAME),
                 new TextureAtlas(Game.OBJECT_ATLAS_FILE_NAME), new Input());
         tiles = level.getTiles();
+        solidTiles = level.getSolidTiles();
 
         int iconIndent = 2;
 
@@ -140,9 +142,12 @@ public class LevelEditor extends JFrame {
             JButton button = new JButton();
             BufferedImage image = new BufferedImage(36, 36, BufferedImage.TYPE_INT_ARGB);
             Graphics2D graphics2D = (Graphics2D) image.getGraphics();
-            if (tiles.get(value) == null)
+            if (tiles.get(value) != null)
+                graphics2D.drawImage(Utils.resize(tiles.get(value).getImage(), 32, 32), iconIndent, iconIndent, null);
+            else if (solidTiles.get(value) != null)
+                graphics2D.drawImage(Utils.resize(solidTiles.get(value).getImage(), 32, 32), iconIndent, iconIndent, null);
+            else
                 continue;
-            graphics2D.drawImage(Utils.resize(tiles.get(value).getImage(), 32, 32), iconIndent, iconIndent, null);
             button.setIcon(new ImageIcon(image));
 
             button.addActionListener(new ActionListener() {
@@ -221,9 +226,14 @@ public class LevelEditor extends JFrame {
                     graphics.setColor(levelPanel.getBackground());
                     graphics.fillRect(widthIndex * Level.TILE_SCALE, heightIndex * Level.TILE_SCALE, Level.TILE_SCALE,
                             Level.TILE_SCALE);
-                } else
-                    graphics.drawImage(tiles.get(selectedTile).getImage(), widthIndex * Level.TILE_SCALE,
-                            heightIndex * Level.TILE_SCALE, null);
+                } else {
+                    if (tiles.get(selectedTile) != null)
+                        graphics.drawImage(tiles.get(selectedTile).getImage(), widthIndex * Level.TILE_SCALE,
+                                heightIndex * Level.TILE_SCALE, null);
+                    else if (solidTiles.get(selectedTile) != null)
+                        graphics.drawImage(solidTiles.get(selectedTile).getImage(), widthIndex * Level.TILE_SCALE,
+                                heightIndex * Level.TILE_SCALE, null);
+                }
                 tileMap[heightIndex][widthIndex] = selectedTile.numeric();
             }
         }
