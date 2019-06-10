@@ -4,12 +4,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class SolidTile extends Tile {
-    private static final int borderThickness = 4;
+    static final int borderThickness = 4;
 
-    private Rectangle upR;
-    private Rectangle rightR;
-    private Rectangle leftR;
-    private Rectangle downR;
+    Rectangle upR;
+    Rectangle rightR;
+    Rectangle leftR;
+    Rectangle downR;
 
 
     public SolidTile(BufferedImage image, int scale, TileType type) {

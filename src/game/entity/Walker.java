@@ -112,8 +112,8 @@ public abstract class Walker extends Entity {
         int w = (int) getWidth();
         int h = (int) getHeight();
 
-         thisUpLeft = new Rectangle(xIndex, yIndex, w, h);
-         thisDownRight = new Rectangle(xIndex, yIndex + 2, w, h);
+        thisUpLeft = new Rectangle(xIndex, yIndex, w, h);
+        thisDownRight = new Rectangle(xIndex, yIndex + 2, w, h);
 
         boolean bottomClear = true;
         boolean leftClear = true;
@@ -142,8 +142,6 @@ public abstract class Walker extends Entity {
                 setLeftClear(false);
             }
         }
-
-//        solidTilesPhysics.clear();
 
         if (bottomClear)
             setGravityEnabled(true);

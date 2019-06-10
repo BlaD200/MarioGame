@@ -28,6 +28,7 @@ public class Game implements Runnable {
     public static final String LVL_TEXTURES_ATLAS_FILE_NAME = "lvl_textures.png";
     public static final String PLAYER_TEXTURES_ATLAS_FILE_NAME = "character_textures.png";
     public static final String OBJECT_ATLAS_FILE_NAME = "object_textures.png";
+    public static final String ENEMY_ATLAS_FILE_NAME = "enemies_atlas.png";
 
     public static final boolean IS_DEBUG = false;
 
@@ -37,6 +38,7 @@ public class Game implements Runnable {
     private Input				input;
     private TextureAtlas        lvlAtlas;
     private TextureAtlas        objectAtlas;
+    private TextureAtlas        enemyAtlas;
     private Level               level;
     private boolean paused = false;
 
@@ -46,16 +48,96 @@ public class Game implements Runnable {
         input = new Input();
         lvlAtlas = new TextureAtlas(LVL_TEXTURES_ATLAS_FILE_NAME);
         objectAtlas = new TextureAtlas(OBJECT_ATLAS_FILE_NAME);
+        enemyAtlas = new TextureAtlas(ENEMY_ATLAS_FILE_NAME);
         level = new Level(lvlAtlas, objectAtlas, input);
 
         TextureAtlas playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
         Player player = new Player(50, 400, 1.9f, 3, 1.5f, 5, 18,
-                playerAtlas, menu, Game.this, lives);
+                playerAtlas, menu, Game.this, lives, level);
         level.addEntity(player);
 
-        Sprite enemySprite = new Sprite(playerAtlas.cut(1, 34, 16, 16), 2);
-        Enemy enemy = new Enemy(EntityType.Enemy, enemySprite, 1300,400, 400,32, 32);
-        level.addEntity(enemy);
+        Sprite enemySprite = new Sprite(enemyAtlas.cut(0, 16, 16, 16), 2);
+        Sprite bigEnemySprite = new Sprite(enemyAtlas.cut(0, 16, 16, 16), 32);
+
+        String levelNum = Level.getLevel();
+        switch (levelNum) {
+            case "Level_1.lvl":
+                Enemy enemy0 = new Enemy(EntityType.Enemy, enemySprite, 600,Game.height - 100, 32,32, 2, 5);
+                level.addEntity(enemy0);
+                Enemy enemy1 = new Enemy(EntityType.Enemy, enemySprite, 900,Game.height - 100, 32,32, 2, 5);
+                level.addEntity(enemy1);
+                Enemy enemy2 = new Enemy(EntityType.Enemy, enemySprite, 1200,Game.height - 100, 32,32, 2, 5);
+                level.addEntity(enemy2);
+                Enemy enemy3 = new Enemy(EntityType.Enemy, enemySprite, 1500,Game.height - 100, 32,32, 2, 5);
+                level.addEntity(enemy3);
+                Enemy enemy4 = new Enemy(EntityType.Enemy, enemySprite, 3000,Game.height - 100, 32,32, 2, 5);
+                level.addEntity(enemy4);
+                Enemy enemy5 = new Enemy(EntityType.Enemy, enemySprite, 3800,Game.height - 100, 32,32, 2, 5);
+                level.addEntity(enemy5);
+                Enemy enemy6 = new Enemy(EntityType.Enemy, enemySprite, 4200,Game.height - 100, 32,32, 2, 5);
+                level.addEntity(enemy6);
+                Enemy enemy7 = new Enemy(EntityType.Enemy, enemySprite, 4650,Game.height - 100, 32,32, 2, 5);
+                level.addEntity(enemy7);
+                Enemy enemy8 = new Enemy(EntityType.Enemy, enemySprite, 5450,Game.height - 100, 32,32, 2, 5);
+                level.addEntity(enemy8);
+                break;
+            case "Level_2.lvl":
+                Enemy lvl2Enemy0 = new Enemy(EntityType.Enemy, enemySprite, 600,Game.height - 100, 32,32, 3, 5);
+                level.addEntity(lvl2Enemy0);
+                Enemy lvl2Enemy1 = new Enemy(EntityType.Enemy, enemySprite, 1000,Game.height - 100, 32,32, 3, 5);
+                level.addEntity(lvl2Enemy1);
+                Enemy lvl2Enemy2 = new Enemy(EntityType.Enemy, enemySprite, 1700,Game.height - 100, 32,32, 3, 5);
+                level.addEntity(lvl2Enemy2);
+                Enemy lvl2Enemy3 = new Enemy(EntityType.Enemy, enemySprite, 2170,Game.height - 300, 32,32, 3, 5);
+                level.addEntity(lvl2Enemy3);
+                Enemy lvl2Enemy4 = new Enemy(EntityType.Enemy, enemySprite, 3300,Game.height - 100, 32,32, 3, 5);
+                level.addEntity(lvl2Enemy4);
+                Enemy lvl2Enemy5 = new Enemy(EntityType.Enemy, enemySprite, 3800,Game.height - 100, 32,32, 3, 5);
+                level.addEntity(lvl2Enemy5);
+                Enemy lvl2Enemy6 = new Enemy(EntityType.Enemy, enemySprite, 4500,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl2Enemy6);
+                Enemy lvl2Enemy8 = new Enemy(EntityType.Enemy, enemySprite, 5400,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl2Enemy8);
+                break;
+            case "Level_3.lvl":
+                Enemy lvl3Enemy0 = new Enemy(EntityType.Enemy, enemySprite, 600,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl3Enemy0);
+                Enemy lvl3Enemy1 = new Enemy(EntityType.Enemy, enemySprite, 1000,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl3Enemy1);
+                Enemy lvl3Enemy2 = new Enemy(EntityType.Enemy, enemySprite, 1700,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl3Enemy2);
+                Enemy lvl3Enemy3 = new Enemy(EntityType.Enemy, enemySprite, 2170,Game.height - 300, 32,32, 1, 5);
+                level.addEntity(lvl3Enemy3);
+                Enemy lvl3Enemy4 = new Enemy(EntityType.Enemy, enemySprite, 3300,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl3Enemy4);
+                Enemy lvl3Enemy5 = new Enemy(EntityType.Enemy, enemySprite, 3800,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl3Enemy5);
+                Enemy lvl3Enemy6 = new Enemy(EntityType.Enemy, enemySprite, 4500,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl3Enemy6);
+                Enemy lvl3Enemy8 = new Enemy(EntityType.Enemy, enemySprite, 5400,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl3Enemy8);
+                break;
+            case "Level_4.lvl":
+                Enemy lvl4Enemy0 = new Enemy(EntityType.Enemy, enemySprite, 300,Game.height - 100, 32,32, 3, 5);
+                level.addEntity(lvl4Enemy0);
+                Enemy lvl4Enemy1 = new Enemy(EntityType.Enemy, enemySprite, 1150,Game.height - 100, 32,32, 1, 5);
+                level.addEntity(lvl4Enemy1);
+                Enemy lvl4Enemy2 = new Enemy(EntityType.Enemy, enemySprite, 3500,30, 32,32, 4, 5);
+                level.addEntity(lvl4Enemy2);
+                Enemy lvl4Enemy3 = new Enemy(EntityType.Enemy, enemySprite, 3600,30, 32,32, 4, 5);
+                level.addEntity(lvl4Enemy3);
+                Enemy lvl4Enemy4 = new Enemy(EntityType.Enemy, enemySprite, 3700,30, 32,32, 4, 5);
+                level.addEntity(lvl4Enemy4);
+                Enemy lvl4Enemy5 = new Enemy(EntityType.Enemy, enemySprite, 3800,30, 32,32, 4, 5);
+                level.addEntity(lvl4Enemy5);
+                Enemy lvl4Enemy6 = new Enemy(EntityType.Enemy, enemySprite, 3900,30, 32,32, 4, 5);
+                level.addEntity(lvl4Enemy6);
+                Enemy lvl4Enemy8 = new Enemy(EntityType.Enemy, enemySprite, 4000,30, 32,32, 4, 5);
+                level.addEntity(lvl4Enemy8);
+                Enemy lvl4Enemy9 = new Enemy(EntityType.Enemy, bigEnemySprite, 4900,Game.height - 570, 1024,1024, 0, 0);
+                level.addEntity(lvl4Enemy9);
+                break;
+        }
 
         Display.create(width, height, TITLE, CLEAR_COLOR, NUM_BUFFERS, this, menu, lives);
 

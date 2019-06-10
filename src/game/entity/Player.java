@@ -12,6 +12,7 @@ import utils.Utils;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,15 +34,20 @@ public class Player extends Walker {
     private Game game;
     private boolean start;
     private int lives;
+    private ArrayList<Entity> entities;
+    private Rectangle enemyRect;
+    private Rectangle playerRect;
+    private Rectangle playerBottomRect;
 
 
     public Player(float x, float y, float scale, float speed, float sprintSpeed, float gravity, float jumpPower,
-                  TextureAtlas atlas, Menu menu, Game game, int lives) {
+                  TextureAtlas atlas, Menu menu, Game game, int lives, Level level) {
         super(EntityType.Player, x, y, SPRITE_SCALE * scale, SPRITE_SCALE * scale, speed);
 
         this.menu = menu;
         this.game = game;
         Level.setOffsetX(0);
+        entities = level.getEntities();
 
         this.scale = scale;
         animation = Animation.FRONT_RIGHT;
@@ -114,7 +120,7 @@ public class Player extends Walker {
                     animation = newAnimation;
                     spriteMap.get(animation).resetAnimation();
                 }
-            } else  {
+            } else {
                 boostSpeed++;
                 if (leftClear)
                     newX -= speed;
@@ -226,27 +232,32 @@ public class Player extends Walker {
         if (newY >= Game.height - SPRITE_SCALE * 5) {
             animation = Animation.DEATH;
             if (newY >= Game.height - SPRITE_SCALE) {
-                if (!start) {
-                    lives--;
-                    if (lives == 0) {
-                        Display.gameOver();
-                        Game.sleep(3000);
-                        Display.dispose();
-                    } else {
-                        Display.dispose();
-                        Game mario = new Game(menu, lives);
-                        mario.start();
-                    }
-                    game.stop();
-                    start = true;
-                }
+                loseLife();
             }
+
+        }
+
+        for (Entity entity : entities) {
+            if (entity.type == EntityType.Player)
+                continue;
+            enemyRect = new Rectangle((int) entity.x, (int) (entity.y - entity.getHeight()), (int) entity.getWidth(),
+                    (int) entity.getHeight());
+            playerRect = new Rectangle((int) x, (int) (y - height), (int) width, (int) height - 2);
+            playerBottomRect = new Rectangle((int) x + 2, (int) y, (int) width - 4, 2);
+            if (playerBottomRect.intersects(enemyRect))
+                entity.x = -100;
+            else if (playerRect.intersects(enemyRect)) {
+                loseLife();
+            }
+
 
         }
 
         Level.setOffsetX(newXOffset);
         x = newX;
         y = newY;
+
+
     }
 
 
@@ -277,6 +288,23 @@ public class Player extends Walker {
         ROTATE_RIGHT,
         ROTATE_LEFT,
         DEATH,
+    }
+
+    private void loseLife() {
+        if (!start) {
+            lives--;
+            if (lives == 0) {
+                Display.gameOver();
+                Game.sleep(3000);
+                Display.dispose();
+            } else {
+                Display.dispose();
+                Game mario = new Game(menu, lives);
+                mario.start();
+            }
+            game.stop();
+            start = true;
+        }
     }
 
 }

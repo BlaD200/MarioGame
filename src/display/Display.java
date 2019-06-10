@@ -32,6 +32,7 @@ public class Display {
     private static int lives;
     private static BufferedImage heartImage;
     private static BufferedImage gameOver;
+    private static BufferedImage victory;
 
     public static void create(int width, int height, String title, int _clearColor, int numBuffers,
                               Game game, Menu menu, int lives) {
@@ -42,6 +43,7 @@ public class Display {
         try {
             heartImage = ImageIO.read(new File("res/heartImage.png"));
             gameOver = ImageIO.read(new File("res/gameOver.jpg"));
+            victory = ImageIO.read(new File("res/victory.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -135,5 +137,10 @@ public class Display {
 
     public static void dispose() {
         window.dispose();
+    }
+
+    public static void victory() {
+        Graphics g = content.getGraphics();
+        g.drawImage(victory, 0, 0, window.getWidth(), window.getHeight(), null);
     }
 }

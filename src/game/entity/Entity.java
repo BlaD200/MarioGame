@@ -34,6 +34,10 @@ public abstract class Entity {
         return y;
     }
 
+    public abstract float getWidth();
+
+    public abstract float getHeight();
+
     public void setX(float x){
         this.x = x;
     }

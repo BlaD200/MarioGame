@@ -2,6 +2,7 @@ package game.level;
 
 import IO.Input;
 import game.Game;
+import game.entity.Enemy;
 import game.entity.Entity;
 import graphics.TextureAtlas;
 import utils.Utils;
@@ -120,6 +121,9 @@ public class Level {
         return tileMap;
     }
 
+    public ArrayList<Entity> getEntities() {
+        return entities;
+    }
 
     public void addEntity(Entity entity) {
         entities.add(entity);
@@ -231,5 +235,9 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.BAR_TOP));
         tiles.put(TileType.FLAG, new Tile(object.cut(8 * TILE_SCALE, 2 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.FLAG));
+    }
+
+    public static String getLevel() {
+        return level;
     }
 }
