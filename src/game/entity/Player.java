@@ -1,11 +1,13 @@
 package game.entity;
 
 import IO.Input;
+import display.Display;
 import game.Game;
 import game.level.Level;
 import graphics.AnimatedSprite;
 import graphics.Sprite;
 import graphics.TextureAtlas;
+import menu.Menu;
 import utils.Utils;
 
 import java.awt.*;
@@ -27,9 +29,19 @@ public class Player extends Walker {
     private float jumpSpeed;
     private int boostSpeed;
 
+    private Menu menu;
+    private Game game;
+    private boolean start;
+    private int lives;
 
-    public Player(float x, float y, float scale, float speed, float sprintSpeed, float gravity, float jumpPower, TextureAtlas atlas) {
+
+    public Player(float x, float y, float scale, float speed, float sprintSpeed, float gravity, float jumpPower,
+                  TextureAtlas atlas, Menu menu, Game game, int lives) {
         super(EntityType.Player, x, y, SPRITE_SCALE * scale, SPRITE_SCALE * scale, speed);
+
+        this.menu = menu;
+        this.game = game;
+        Level.setOffsetX(0);
 
         this.scale = scale;
         animation = Animation.FRONT_RIGHT;
@@ -39,6 +51,7 @@ public class Player extends Walker {
         this.gravity = gravity;
         this.gravityEnabled = true;
         this.jumpPower = jumpPower;
+        this.lives = lives;
 
         AnimatedSprite animatedSprite = new AnimatedSprite(scale, 4, ANIMATION_TIME);
         for (int i = 2, j = 0; i >= 0; i--, j++) {
@@ -101,7 +114,7 @@ public class Player extends Walker {
                     animation = newAnimation;
                     spriteMap.get(animation).resetAnimation();
                 }
-            } else {
+            } else  {
                 boostSpeed++;
                 if (leftClear)
                     newX -= speed;
@@ -210,8 +223,25 @@ public class Player extends Walker {
         }
 
 
-        if (newY >= Game.height - SPRITE_SCALE * scale) {
-            newY = Game.height - SPRITE_SCALE * scale - 1;
+        if (newY >= Game.height - SPRITE_SCALE * 5) {
+            animation = Animation.DEATH;
+            if (newY >= Game.height - SPRITE_SCALE) {
+                if (!start) {
+                    lives--;
+                    if (lives == 0) {
+                        Display.gameOver();
+                        Game.sleep(3000);
+                        Display.dispose();
+                    } else {
+                        Display.dispose();
+                        Game mario = new Game(menu, lives);
+                        mario.start();
+                    }
+                    game.stop();
+                    start = true;
+                }
+            }
+
         }
 
         Level.setOffsetX(newXOffset);

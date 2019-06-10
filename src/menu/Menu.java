@@ -39,6 +39,7 @@ public class Menu extends JFrame {
     private JPanel backgroundPanel;
     private JLabel titleLabel;
     private static ArrayList<String> levelNames = new ArrayList<>();
+    private static String difficulty = "Normal";
 
     public Menu() {
         setUp();
@@ -162,4 +163,11 @@ public class Menu extends JFrame {
         return levelNames;
     }
 
+    static void setDifficulty(String difficulty) {
+        Menu.difficulty = difficulty;
+    }
+
+    public static String getDifficulty() {
+        return difficulty;
+    }
 }

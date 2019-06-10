@@ -4,6 +4,7 @@ import IO.Input;
 import game.Game;
 import menu.Menu;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -11,6 +12,8 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Display {
@@ -26,21 +29,27 @@ public class Display {
 
     private static BufferStrategy	bufferStrategy;
     private static Game game;
-    private static Menu menu;
+    private static int lives;
+    private static BufferedImage heartImage;
+    private static BufferedImage gameOver;
 
     public static void create(int width, int height, String title, int _clearColor, int numBuffers,
-                              Game game, Menu menu) {
-
-        if (created)
-            return;
+                              Game game, Menu menu, int lives) {
 
         Display.game = game;
-        Display.menu = menu;
+        Display.lives = lives;
+
+        try {
+            heartImage = ImageIO.read(new File("res/heartImage.png"));
+            gameOver = ImageIO.read(new File("res/gameOver.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         window = new JFrame(title);
 //        window.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        window.setUndecorated(true);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setUndecorated(true);
+        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         content = new Canvas();
 
         Dimension size = new Dimension(width, height);
@@ -87,6 +96,12 @@ public class Display {
     public static void swapBuffers() {
         Graphics g = bufferStrategy.getDrawGraphics();
         g.drawImage(buffer, 0, 0, null);
+        int x = 10;
+        int y = 10;
+        for (int i = 0; i < lives; i++) {
+            g.drawImage(heartImage, x, y, 50, 50, null);
+            x += 60;
+        }
         bufferStrategy.show();
     }
 
@@ -111,5 +126,14 @@ public class Display {
 
     public static void addInputListener(Input inputListener) {
         window.add(inputListener);
+    }
+
+    public static void gameOver() {
+        Graphics g = content.getGraphics();
+        g.drawImage(gameOver, 0, 0, window.getWidth(), window.getHeight(), null);
+    }
+
+    public static void dispose() {
+        window.dispose();
     }
 }

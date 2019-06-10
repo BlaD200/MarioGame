@@ -142,6 +142,35 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.BRICK_BLOCK_BLUE));
         solidTiles.put(TileType.COIN_BLOCK, new SolidTile(levelAtlas.cut(24 * TILE_SCALE, 0 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.COIN_BLOCK));
+
+        solidTiles.put(TileType.PIPE_CENTER_LEFT, new SolidTile(levelAtlas.cut(0 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_CENTER_LEFT));
+        solidTiles.put(TileType.PIPE_CENTER_RIGHT, new SolidTile(levelAtlas.cut(1 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_CENTER_RIGHT));
+        solidTiles.put(TileType.PIPE_UP_LEFT, new SolidTile(levelAtlas.cut(0 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_UP_LEFT));
+        solidTiles.put(TileType.PIPE_UP_RIGHT, new SolidTile(levelAtlas.cut(1 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_UP_RIGHT));
+
+        solidTiles.put(TileType.PIPE_LEFT_UP, new SolidTile(levelAtlas.cut(2 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_UP));
+        solidTiles.put(TileType.PIPE_LEFT_DOWN, new SolidTile(levelAtlas.cut(2 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_DOWN));
+        solidTiles.put(TileType.PIPE_LEFT_CENTER_UP, new SolidTile(levelAtlas.cut(3 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_CENTER_UP));
+        solidTiles.put(TileType.PIPE_LEFT_CENTER_DOWN, new SolidTile(levelAtlas.cut(3 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_CENTER_DOWN));
+        solidTiles.put(TileType.PIPE_SMALL_UP, new SolidTile(levelAtlas.cut(4 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_SMALL_UP));
+        solidTiles.put(TileType.PIPE_SMALL_DOWN, new SolidTile(levelAtlas.cut(4 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_SMALL_DOWN));
+
+        solidTiles.put(TileType.PLATFORM_GRASS_LEFT, new SolidTile(levelAtlas.cut(5 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_LEFT));
+        solidTiles.put(TileType.PLATFORM_GRASS_CENTER, new SolidTile(levelAtlas.cut(6 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_CENTER));
+        solidTiles.put(TileType.PLATFORM_GRASS_RIGHT, new SolidTile(levelAtlas.cut(7 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
+                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_RIGHT));
     }
 
 
@@ -158,13 +187,6 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.BUSH_LEFT));
         tiles.put(TileType.BUSH_RIGHT, new Tile(levelAtlas.cut(13 * TILE_SCALE, 11 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.BUSH_RIGHT));
-
-        tiles.put(TileType.PLATFORM_GRASS_LEFT, new Tile(levelAtlas.cut(5 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_LEFT));
-        tiles.put(TileType.PLATFORM_GRASS_CENTER, new Tile(levelAtlas.cut(6 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_CENTER));
-        tiles.put(TileType.PLATFORM_GRASS_RIGHT, new Tile(levelAtlas.cut(7 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PLATFORM_GRASS_RIGHT));
 
         tiles.put(TileType.CLOUD_UP_LEFT, new Tile(levelAtlas.cut(0 * TILE_SCALE, 20 * TILE_SCALE, TILE_SCALE, TILE_SCALE),
                 TILE_IN_GAME_SCALE, TileType.CLOUD_UP_LEFT));
@@ -195,28 +217,6 @@ public class Level {
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_CENTER));
         tiles.put(TileType.MOUNTAIN_CENTER_STONE, new Tile(levelAtlas.cut(8 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.MOUNTAIN_CENTER_STONE));
-
-        tiles.put(TileType.PIPE_CENTER_LEFT, new Tile(levelAtlas.cut(0 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_CENTER_LEFT));
-        tiles.put(TileType.PIPE_CENTER_RIGHT, new Tile(levelAtlas.cut(1 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_CENTER_RIGHT));
-        tiles.put(TileType.PIPE_UP_LEFT, new Tile(levelAtlas.cut(0 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_UP_LEFT));
-        tiles.put(TileType.PIPE_UP_RIGHT, new Tile(levelAtlas.cut(1 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_UP_RIGHT));
-
-        tiles.put(TileType.PIPE_LEFT_UP, new Tile(levelAtlas.cut(2 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_UP));
-        tiles.put(TileType.PIPE_LEFT_DOWN, new Tile(levelAtlas.cut(2 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_DOWN));
-        tiles.put(TileType.PIPE_LEFT_CENTER_UP, new Tile(levelAtlas.cut(3 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_CENTER_UP));
-        tiles.put(TileType.PIPE_LEFT_CENTER_DOWN, new Tile(levelAtlas.cut(3 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_LEFT_CENTER_DOWN));
-        tiles.put(TileType.PIPE_SMALL_UP, new Tile(levelAtlas.cut(4 * TILE_SCALE, 8 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_SMALL_UP));
-        tiles.put(TileType.PIPE_SMALL_DOWN, new Tile(levelAtlas.cut(4 * TILE_SCALE, 9 * TILE_SCALE, TILE_SCALE,
-                TILE_SCALE), TILE_IN_GAME_SCALE, TileType.PIPE_SMALL_DOWN));
 
         tiles.put(TileType.CASTLE_BRICK, new Tile(levelAtlas.cut(11 * TILE_SCALE, 0 * TILE_SCALE, TILE_SCALE,
                 TILE_SCALE), TILE_IN_GAME_SCALE, TileType.CASTLE_BRICK));

@@ -5,6 +5,8 @@ import utils.ResourceLoader;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -39,6 +41,12 @@ public class Settings extends JFrame {
             @Override
             public void mouseExited(MouseEvent e) {
                 backLabel.setIcon(new ImageIcon("res/icons/backIcon.png"));
+            }
+        });
+        difficultyComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Menu.setDifficulty((String) difficultyComboBox.getSelectedItem());
             }
         });
         soundSpinner.setModel(new SpinnerNumberModel(50, 0, 100, 1));

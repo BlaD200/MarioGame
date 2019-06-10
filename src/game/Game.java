@@ -40,7 +40,7 @@ public class Game implements Runnable {
     private Level               level;
     private boolean paused = false;
 
-    public Game(Menu menu) {
+    public Game(Menu menu, int lives) {
         running = false;
 
         input = new Input();
@@ -49,14 +49,16 @@ public class Game implements Runnable {
         level = new Level(lvlAtlas, objectAtlas, input);
 
         TextureAtlas playerAtlas = new TextureAtlas(PLAYER_TEXTURES_ATLAS_FILE_NAME);
-        Player player = new Player(50, 400, 1.9f, 3, 1.5f, 5, 18, playerAtlas);
+        Player player = new Player(50, 400, 1.9f, 3, 1.5f, 5, 18,
+                playerAtlas, menu, Game.this, lives);
         level.addEntity(player);
 
         Sprite enemySprite = new Sprite(playerAtlas.cut(1, 34, 16, 16), 2);
         Enemy enemy = new Enemy(EntityType.Enemy, enemySprite, 1300,400, 400,32, 32);
         level.addEntity(enemy);
 
-        Display.create(width, height, TITLE, CLEAR_COLOR, NUM_BUFFERS, this, menu);
+        Display.create(width, height, TITLE, CLEAR_COLOR, NUM_BUFFERS, this, menu, lives);
+
         graphics = Display.getGraphics();
         Display.addInputListener(input);
     }
@@ -65,6 +67,14 @@ public class Game implements Runnable {
     public static void setSize(Dimension d){
         width = (int) d.getWidth();
         height = (int) d.getHeight();
+    }
+
+    public static void sleep(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public synchronized void start() {
@@ -96,13 +106,18 @@ public class Game implements Runnable {
     }
 
     private void update() {
-        level.update();
+        if (!paused)
+            level.update();
+        else
+            input = new Input();
     }
 
     private void render() {
-        Display.clear();
-        level.render(graphics);
-        Display.swapBuffers();
+        if (!paused) {
+            Display.clear();
+            level.render(graphics);
+            Display.swapBuffers();
+        }
     }
 
     public void run() {
@@ -165,5 +180,8 @@ public class Game implements Runnable {
 
     public void setPaused(boolean b) {
         paused = b;
+    }
+
+    public void exit() {
     }
 }

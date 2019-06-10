@@ -21,6 +21,7 @@ public class Play extends JFrame {
     private JPanel mainPanel;
     private static Play instance;
     private static Menu menu;
+    private int livesOfPlayer;
 
     public Play() {
         setUp();
@@ -50,6 +51,23 @@ public class Play extends JFrame {
 
     @SuppressWarnings("Duplicates")
     private void setUp() {
+        String difficulty = Menu.getDifficulty();
+
+        switch (difficulty) {
+            case "Easy":
+                livesOfPlayer = 4;
+                break;
+            case "Normal":
+                livesOfPlayer = 3;
+                break;
+            case "Hard":
+                livesOfPlayer = 2;
+                break;
+            case "Insane":
+                livesOfPlayer = 1;
+                break;
+        }
+
         backLabel.setIcon(new ImageIcon("res/icons/backIcon.png"));
 
         Font fontMario = ResourceLoader.loadFont();
@@ -94,7 +112,7 @@ public class Play extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 String level = label.getText();
                 Level.setLevel(level);
-                Game mario = new Game(menu);
+                Game mario = new Game(menu, livesOfPlayer);
                 mario.start();
             }
 

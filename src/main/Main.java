@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Game mario = new Game(new Menu());
+        Game mario = new Game(new Menu(), 3);
         mario.start();
 
     }
