@@ -108,7 +108,7 @@ public class Display {
     public static void swapBuffers() {
         Graphics g = bufferStrategy.getDrawGraphics();
         g.drawImage(buffer, 0, 0, null);
-        int x = 10;
+        int x = Game.width - 60 * lives;
         int y = 10;
         for (int i = 0; i < lives; i++) {
             g.drawImage(heartImage, x, y, 50, 50, null);
