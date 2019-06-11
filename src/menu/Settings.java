@@ -34,8 +34,6 @@ public class Settings extends JFrame {
     private Settings(String difficulty, int volume) {
         setUp();
         gainControl.setValue(gainControl.getMaximum());
-        System.out.println(gainControl.getMinimum());
-        System.out.println(gainControl.getMaximum());
         difficultyComboBox.setSelectedItem(difficulty);
         backLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -94,7 +92,9 @@ public class Settings extends JFrame {
         Font fontForOther = fontMario.deriveFont(Font.PLAIN, 70);
 
         difficultyLabel.setFont(fontForLabel);
+        difficultyLabel.setForeground(Color.WHITE);
         soundLabel.setFont(fontForLabel);
+        soundLabel.setForeground(Color.WHITE);
         soundSpinner.setFont(fontForOther);
         difficultyComboBox.setFont(fontForOther);
     }

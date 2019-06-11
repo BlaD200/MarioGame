@@ -20,44 +20,47 @@
           <component id="21092" class="javax.swing.JButton" binding="playBtn">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0"/>
+              <gridbag weightx="1.0" weighty="1.0" ipadx="10"/>
             </constraints>
             <properties>
               <horizontalTextPosition value="0"/>
-              <opaque value="true"/>
+              <maximumSize width="100" height="100"/>
               <text value="Play"/>
             </properties>
           </component>
           <component id="2a403" class="javax.swing.JButton" binding="settingsBtn">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="1.0"/>
+              <gridbag weightx="0.0" weighty="1.0" ipadx="10"/>
             </constraints>
             <properties>
               <horizontalTextPosition value="0"/>
-              <opaque value="true"/>
+              <maximumSize width="100" height="100"/>
+              <preferredSize width="480" height="70"/>
               <text value="Settings"/>
             </properties>
           </component>
           <component id="ffbad" class="javax.swing.JButton" binding="createLvlBtn">
             <constraints>
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="1.0"/>
+              <gridbag weightx="0.0" weighty="1.0" ipadx="10"/>
             </constraints>
             <properties>
               <horizontalTextPosition value="0"/>
-              <opaque value="true"/>
-              <text value="Create a Level"/>
+              <maximumSize width="100" height="100"/>
+              <preferredSize width="480" height="70"/>
+              <text value="Custom Lvl"/>
             </properties>
           </component>
           <component id="2a1ae" class="javax.swing.JButton" binding="resumeBtn">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="1.0"/>
+              <gridbag weightx="0.0" weighty="1.0" ipadx="10"/>
             </constraints>
             <properties>
               <enabled value="false"/>
-              <opaque value="true"/>
+              <maximumSize width="100" height="100"/>
+              <preferredSize width="480" height="70"/>
               <text value="Resume"/>
             </properties>
           </component>
@@ -74,7 +77,7 @@
           <component id="1a134" class="javax.swing.JLabel" binding="titleLabel">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0"/>
+              <gridbag weightx="1.0" weighty="0.5"/>
             </constraints>
             <properties>
               <text value="Super Mario Bros"/>

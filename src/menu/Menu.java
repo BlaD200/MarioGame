@@ -139,6 +139,7 @@ public class Menu extends JFrame {
         createLvlBtn.setFont(fontForBtn);
         resumeBtn.setFont(fontForBtn);
         titleLabel.setFont(titleFont);
+        titleLabel.setForeground(Color.WHITE);
     }
 
     public static void main(String[] args) {
@@ -148,7 +149,7 @@ public class Menu extends JFrame {
     private void createUIComponents() {
         BufferedImage myImage = null;
         try {
-            myImage = ImageIO.read(new File("res/backgrounds/MenuBackground.jpg"));
+            myImage = ImageIO.read(new File("res/backgrounds/MenuBackground.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

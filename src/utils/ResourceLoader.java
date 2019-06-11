@@ -31,7 +31,7 @@ public class ResourceLoader {
         Font fontMario = null;
         try {
             fontMario = Font.createFont(Font.TRUETYPE_FONT,
-                    new FileInputStream(new File("res/FontMario.ttf")));
+                    new FileInputStream(new File("res/PixelEmulator.otf")));
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }

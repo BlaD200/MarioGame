@@ -107,6 +107,7 @@ public class Play extends JFrame {
 
         JLabel label = new JLabel(name);
         label.setFont(font);
+        label.setForeground(Color.WHITE);
         label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -123,7 +124,7 @@ public class Play extends JFrame {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                label.setForeground(Color.BLACK);
+                label.setForeground(Color.WHITE);
             }
         });
 
@@ -143,7 +144,7 @@ public class Play extends JFrame {
     private void createUIComponents() {
         BufferedImage myImage = null;
         try {
-            myImage = ImageIO.read(new File("res/backgrounds/PlayBackground.jpg"));
+            myImage = ImageIO.read(new File("res/backgrounds/PlayBackground.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
